@@ -48,3 +48,18 @@ class DishDetail(APIView):
             dish, context={'request': request}
         )
         return Response(serializer.data)
+
+    def put(self, request, pk):
+        dish = self.get_object(pk)
+        serializer = DishSerializer(
+            dish, data=request.data, context={'request': request}
+        )
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        dish = self.get_object(pk)
+        dish.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
