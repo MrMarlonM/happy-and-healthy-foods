@@ -3,7 +3,7 @@ from .models import Restaurant
 
 
 class RestaurantSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='created_by.username')
+    created_by = serializers.ReadOnlyField(source='created_by.username')
     is_owner = serializers.SerializerMethodField()
 
     def validate_image(self, value):
@@ -23,7 +23,7 @@ class RestaurantSerializer(serializers.ModelSerializer):
 
     def get_is_owner(self, obj):
         request = self.context['request']
-        return request.user == obj.owner
+        return request.user == obj.created_by
 
     class Meta:
         model = Restaurant
