@@ -1,12 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 from restaurants.models import Restaurant
-from profiles.models import Profile
 
 
 class Review(models.Model):
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
-    created_by = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField(max_length=500)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
