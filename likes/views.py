@@ -33,3 +33,28 @@ class LikeList(APIView):
         return Response(
             serializer.errors, status=status.HTTP_400_BAD_REQUEST
         )
+
+
+class LikeDetail(APIView):
+    serializer_class = LikeSerializer
+    permission_classes = [IsOwnerOrReadOnly]
+
+    def get_object(self, pk):
+        try:
+            like = Like.objects.get(pk=pk)
+            self.check_object_permissions(self.request, like)
+            return like
+        except Like.DoesNotExist:
+            raise Http404
+    
+    def get(self, request, pk):
+        like = self.get_object(pk)
+        serializer = LikeSerializer(
+            like, context={'request': request}
+        )
+        return Response(serializer.data)
+    
+    def delete(self, request, pk):
+        like = self.get_object(pk)
+        like.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
