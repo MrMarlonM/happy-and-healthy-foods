@@ -14,3 +14,6 @@ class ReviewSerializer(serializers.ModelSerializer):
         model = Review
         fields = '__all__'
     
+
+class ReviewDetailSerializer(ReviewSerializer):
+    restaurant = serializers.ReadOnlyField(source='restaurant.id')

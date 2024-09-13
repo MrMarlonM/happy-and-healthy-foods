@@ -22,3 +22,7 @@ class DishSerializer(serializers.ModelSerializer):
     class Meta:
         model = Dish
         fields = '__all__'
+
+
+class DishDetailSerializer(DishSerializer):
+    restaurant = serializers.ReadOnlyField(source="restaurant.id")
