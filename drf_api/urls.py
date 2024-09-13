@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('profiles.urls')),
     path('', include('restaurants.urls')),
     path('', include('dishes.urls')),
+    path('', include('reviews.urls')),
 ]

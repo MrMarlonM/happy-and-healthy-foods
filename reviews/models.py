@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from restaurants.models import Restaurant
+from profiles.models import Profile
 
 
 class Review(models.Model):

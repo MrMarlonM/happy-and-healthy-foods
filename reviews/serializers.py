@@ -3,13 +3,12 @@ from .models import Review
 
 
 class ReviewSerializer(serializers.ModelSerializer):
-    restaurant = serializers.ReadOnlyField(source='restaurant.name')
-    created_by = serializers.ReadOnlyField(source='created_by.username')
+    created_by = serializers.ReadOnlyField(source='created_by.owner.username')
     is_owner = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
-        request = sef.context['request']
-        return request.user == obj.created_by
+        request = self.context['request']
+        return request.user == obj.created_by.owner
     
     class Meta:
         model = Review
