@@ -1,4 +1,4 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, filters
 from .models import Review
 from .serializers import ReviewSerializer, ReviewDetailSerializer
 from drf_api.permissions import IsOwnerOrReadOnly
@@ -10,6 +10,12 @@ class ReviewList(generics.ListCreateAPIView):
         permissions.IsAuthenticatedOrReadOnly
     ]
     queryset = Review.objects.all()
+    filter_backends = [
+        filters.OrderingFilter,
+    ]
+    ordering_fields = [
+        'updated_at',
+    ]
 
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
