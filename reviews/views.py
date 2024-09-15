@@ -12,6 +12,11 @@ class ReviewList(generics.ListCreateAPIView):
     queryset = Review.objects.all()
     filter_backends = [
         filters.OrderingFilter,
+        filters.SearchFilter,
+    ]
+    search_fields = [
+        'created_by',
+        'content',
     ]
     ordering_fields = [
         'updated_at',
