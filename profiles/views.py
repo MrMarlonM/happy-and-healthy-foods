@@ -20,6 +20,12 @@ class ProfileDetail(generics.RetrieveUpdateAPIView):
         profile = self.get_object()
         restaurant_id = request.data.get('restaurant_id')
 
+        if not restaurant_id:
+            return Response(
+                {'error': 'Restaurant ID is required'},
+                status=status.HTTP_400_BAD_REQUEST
+                )
+        
         try:
             restaurant = Restaurant.objects.get(id=restaurant_id)
         except Restaurant.DoesNotExist:
@@ -28,10 +34,28 @@ class ProfileDetail(generics.RetrieveUpdateAPIView):
                 status=status.HTTP_404_NOT_FOUND
                 )
         
-        if request.method == 'PUT':
-            profile.favorites.add(restaurant)
-        elif request.method == 'DELETE':
-            profile.favorites.remove(restaurant)
+        profile.favorites.add(restaurant)
+        return Response(
+            {'message': 'Restaurant added to favorites'},
+            status=status.HTTP_200_OK
+            )
+
+    def delete(self, request, *args, **kwargs):
+        profile = self.get_object()
+        restaurant_id = request.data.get('restaurant_id')
+
+        if not restaurant_id:
+            return Response(
+                {'error': 'Restaurant ID is required'},
+                status=status.HTTP_400_BAD_REQUEST
+                )
         
-        serializer = self.get_serializer(profile)
-        return Response(serializer.data)
+        try:
+            restaurant = Restaurant.objects.get(id=restaurant_id)
+        except Restaurant.DoesNotExist:
+            return Response(
+                {'error': 'Restaurant does not exist'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+        profile.favorites.remove(restaurant)
+        return Response(status=status.HTTP_204_NO_CONTENT)
