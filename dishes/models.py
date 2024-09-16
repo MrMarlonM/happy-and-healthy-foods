@@ -1,4 +1,5 @@
 from django.core.validators import MinValueValidator
+from decimal import Decimal
 from django.db import models
 from restaurants.models import Restaurant
 
@@ -21,7 +22,7 @@ class Dish(models.Model):
     price = models.DecimalField(
         max_digits=6,
         decimal_places=2,
-        validators=[MinValueValidator(0)]
+        validators=[MinValueValidator(Decimal('0'))]
     )
     image = models.ImageField(upload_to='images/')
     dietary_preference = models.CharField(

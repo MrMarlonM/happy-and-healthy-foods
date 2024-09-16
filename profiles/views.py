@@ -11,7 +11,7 @@ class ProfileList(generics.ListAPIView):
     queryset = Profile.objects.all()
 
 
-class ProfileDetail(generics.RetrieveUpdateAPIView):
+class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ProfileSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Profile.objects.all()
