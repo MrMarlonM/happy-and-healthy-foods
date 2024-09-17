@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 if os.path.exists('env.py'):
     import env
@@ -32,14 +33,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ds9#8@fghu&g*5v-k$63@!p)n8b5!(xn2#t!-bcz&a#=k!9fg+'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEBUG' in os.environ
 
-ALLOWED_HOSTS = ['8000-mrmarlonm-happyandhealt-4qbmu2p9ag1.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST')]
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-mrmarlonm-happyandhealt-4qbmu2p9ag1.ws.codeinstitute-ide.net']
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-mrmarlonm-happyandhealt-4qbmu2p9ag1.ws.codeinstitute-ide.net',
+    ]
+
+CORS_ALLOWED_ORIGINS = [os.environ.get('CLIENT_ORIGIN')]
 
 # Application definition
 
@@ -54,6 +59,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'rest_framework',
     'django_filters',
+    'corsheaders',
 
     'profiles',
     'restaurants',
@@ -63,6 +69,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -96,12 +103,17 @@ WSGI_APPLICATION = 'drf_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if 'DEV' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    }
 
 
 # Password validation
