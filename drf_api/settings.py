@@ -58,7 +58,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEBUG' in os.environ
 
-ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST')]
+ALLOWED_HOSTS = [
+    os.environ.get('ALLOWED_HOST'),
+    'localhost',    
+]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-mrmarlonm-happyandhealt-4qbmu2p9ag1.ws.codeinstitute-ide.net',
