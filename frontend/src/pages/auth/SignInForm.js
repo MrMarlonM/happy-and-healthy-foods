@@ -5,20 +5,27 @@ import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import {useHistory} from 'react-router-dom';
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+
 
 const SignInForm = () => {
+    const setCurrentUser = useSetCurrentUser();
+
     const [signInData, setSignInData] = useState({
         username: "",
         password: "",
     });
     const {username, password} = signInData;
+    
     const history = useHistory();
+    
     const [errors, setErrors] = useState({});
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axios.post('dj-rest-auth/login/', signInData);
+            const {data} = await axios.post('dj-rest-auth/login/', signInData);
+            setCurrentUser(data.user);
             history.push('/');
         } catch(err) {
             setErrors(err.response?.data)
