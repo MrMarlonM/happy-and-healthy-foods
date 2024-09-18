@@ -2,3 +2,17 @@
     background-color:white;
     box-shadow: 2px 2px lightgray;
 }
+
+.NavLink {
+    padding: 5px;
+    color: black;
+}
+
+.NavLink:hover {
+    color: blue;
+    text-decoration: none;
+}
+
+.Active {
+    font-size: larger;
+}

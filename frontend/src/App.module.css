@@ -3,3 +3,7 @@
     background-color: rgb(228, 248, 209);
     min-height: 100vh;
 }
+
+.Main {
+    padding-top: 60px;
+}

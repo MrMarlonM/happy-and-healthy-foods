@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import styles from '../styles/NavBar.module.css';
+import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
     return (
@@ -9,12 +10,33 @@ const NavBar = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link>Home</Nav.Link>
-                        <Nav.Link>Sign In</Nav.Link>
-                        <Nav.Link>Sign Up</Nav.Link>
+                        <NavLink 
+                            exact
+                            className={styles.NavLink}
+                            activeClassName={styles.Active}
+                            to='/'
+                        >
+                                Home
+                        </NavLink>
+                        <NavLink 
+                            className={styles.NavLink}
+                            activeClassName={styles.Active}
+                            to='signin'
+                        >
+                            Sign In
+                        </NavLink>
+                        <NavLink
+                            className={styles.NavLink}
+                            activeClassName={styles.Active}
+                            to='signup'
+                        >
+                            Sign Up
+                        </NavLink>
                     </Nav>
                 </Navbar.Collapse>
-                <Navbar.Brand>Happy and Healthy Food's</Navbar.Brand>
+                <NavLink to='/'>
+                    <Navbar.Brand>Happy and Healthy Food's</Navbar.Brand>
+                </NavLink>
             </Container>
         </Navbar>
     )
