@@ -4,16 +4,19 @@ import styles from '../styles/NavBar.module.css';
 import { NavLink } from 'react-router-dom';
 import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext';
 import { axios } from "axios";
+import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
 
 const NavBar = () => {
     const setCurrentUser = useSetCurrentUser();
     const currentUser = useCurrentUser();
 
+    const { expanded, setExpanded, ref } = useClickOutsideToggle();
+
     const handleSignOut = async () => {
         try {
             await axios.post('dj-rest-auth/logout/');
             setCurrentUser(null);
-        } catch(err) {
+        } catch (err) {
             console.log(err);
         };
     };
@@ -43,7 +46,7 @@ const NavBar = () => {
             </NavLink>
         </>
     )
-    
+
     const loggedOutNav = (
         <>
             <NavLink
@@ -64,9 +67,16 @@ const NavBar = () => {
     );
 
     return (
-        <Navbar className={styles.NavBar} expand="md" fixed='top'>
+        <Navbar expanded={expanded} className={styles.NavBar} expand="md" fixed='top'>
             <Container>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <NavLink to='/'>
+                    <Navbar.Brand>Happy and Healthy Food's</Navbar.Brand>
+                </NavLink>
+                <Navbar.Toggle
+                    ref={ref}
+                    onClick={() => setExpanded(!expanded)}
+                    aria-controls="basic-navbar-nav"
+                />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <NavLink
@@ -80,9 +90,6 @@ const NavBar = () => {
                         {currentUser ? loggedInNav : loggedOutNav}
                     </Nav>
                 </Navbar.Collapse>
-                <NavLink to='/'>
-                    <Navbar.Brand>Happy and Healthy Food's</Navbar.Brand>
-                </NavLink>
             </Container>
         </Navbar>
     )
