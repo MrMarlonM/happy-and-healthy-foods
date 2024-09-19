@@ -3,7 +3,7 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 import styles from '../styles/NavBar.module.css';
 import { NavLink } from 'react-router-dom';
 import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext';
-import { axios } from "axios";
+import axios from "axios";
 import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
 
 const NavBar = () => {
@@ -70,7 +70,7 @@ const NavBar = () => {
         <Navbar expanded={expanded} className={styles.NavBar} expand="md" fixed='top'>
             <Container>
                 <NavLink to='/'>
-                    <Navbar.Brand>Happy and Healthy Food's</Navbar.Brand>
+                    <Navbar.Brand className={styles.Title}>Happy and Healthy Food's</Navbar.Brand>
                 </NavLink>
                 <Navbar.Toggle
                     ref={ref}
@@ -78,7 +78,7 @@ const NavBar = () => {
                     aria-controls="basic-navbar-nav"
                 />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
+                    <Nav className="ml-auto">
                         <NavLink
                             exact
                             className={styles.NavLink}

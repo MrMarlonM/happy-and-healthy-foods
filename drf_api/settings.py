@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [(
-        'rest_framework.authentication.BasicAuthentication'
+        'rest_framework.authentication.SessionAuthentication'
         if 'DEV' in os.environ
         else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
     )],
@@ -61,7 +61,8 @@ DEBUG = 'DEBUG' in os.environ
 
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
-    'localhost',    
+    'localhost',
+    '127.0.0.1',    
 ]
 
 CSRF_TRUSTED_ORIGINS = [
