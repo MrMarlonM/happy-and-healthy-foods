@@ -33,7 +33,7 @@ const NavBar = () => {
             <NavLink
                 className={styles.NavLink}
                 activeClassName={styles.Active}
-                to='addrestaurant'
+                to='/create'
             >
                 Add restaurant
             </NavLink>
