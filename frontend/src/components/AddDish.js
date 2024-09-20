@@ -1,11 +1,12 @@
 import React, { useRef, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosReq } from '../api/axiosDefaults';
 
 const AddDish = () => {
     const [errors, setErrors] = useState({});
-
+    const { id } = useParams();
     const [dishData, setDishData] = useState({
         name: "",
         short_description: "",
@@ -16,7 +17,6 @@ const AddDish = () => {
     const { name, short_description, price, image, dietary_preference } = dishData;
 
     const imageInput = useRef(null);
-    const history = useHistory();
 
     const handleChange = (event) => {
         setDishData({
@@ -39,6 +39,7 @@ const AddDish = () => {
         event.preventDefault()
         const formDataDish = new FormData();
 
+        formDataDish.append('restaurant', id)
         formDataDish.append('name', name)
         formDataDish.append('short_description', short_description)
         formDataDish.append('price', price)
@@ -112,7 +113,6 @@ const AddDish = () => {
                     <option value="other">other</option>
                 </Form.Control>
             </Form.Group>
-            <AddDish/>
             <Button variant="primary" type="submit">
                 Add Dish
             </Button>

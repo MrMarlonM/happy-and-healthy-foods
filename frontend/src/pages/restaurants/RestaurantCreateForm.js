@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosReq } from '../../api/axiosDefaults';
-import AddDish from '../../components/AddDish';
 
 const RestaurantCreateForm = () => {
     const [errors, setErrors] = useState({});
