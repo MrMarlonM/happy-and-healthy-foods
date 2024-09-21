@@ -7,6 +7,7 @@ import SignUpForm from './pages/auth/SignUpForm';
 import SignInForm from './pages/auth/SignInForm';
 import RestaurantCreateForm from './pages/restaurants/RestaurantCreateForm';
 import RestaurantPage from './pages/restaurants/RestaurantPage';
+import RestaurantList from './pages/restaurants/RestaurantList';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
       <NavBar />
       <Container className={styles.Main}>
         <Switch>
-          <Route exact path='/' render={() => <h1>Home page</h1>} />
+          <Route exact path='/' render={() => <RestaurantList/>} />
           <Route exact path='/signin' render={() => <SignInForm />} />
           <Route exact path='/signup' render={() => <SignUpForm />} />
           <Route exact path ='/create' render={() => <RestaurantCreateForm/>} />
