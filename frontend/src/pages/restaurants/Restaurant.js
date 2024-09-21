@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Restaurant = (props) => {
     const location = useLocation();
-    const isRestaurantListPage = location.pathname === '/';
+    const isRestaurantListPage = location.pathname === '/' || location.pathname === '/myrestaurants';
 
     const {
         id,
