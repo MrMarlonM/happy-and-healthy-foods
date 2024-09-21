@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosReq } from '../api/axiosDefaults';
 
 const AddDish = () => {
@@ -48,9 +47,9 @@ const AddDish = () => {
 
         try {
             await axiosReq.post('/dishes/', formDataDish);
-        } catch(err) {
+        } catch (err) {
             console.log(err);
-            if (err.response?.status !== 401){
+            if (err.response?.status !== 401) {
                 setErrors(err.response?.data);
             }
         }
@@ -60,17 +59,20 @@ const AddDish = () => {
         <Form onSubmit={handleSubmit}>
             <Form.Group>
                 <Form.Label>Name</Form.Label>
-                <Form.Control 
+                <Form.Control
                     type="text"
                     name="name"
                     value={name}
-                    onChange={handleChange} 
+                    onChange={handleChange}
                     placeholder="Name of the dish"
                 />
             </Form.Group>
+            {errors.name?.map((message, idx) =>
+                <Alert variant="warning" key={idx}>{message}</Alert>
+            )}
             <Form.Group>
                 <Form.Label>Short description</Form.Label>
-                <Form.Control 
+                <Form.Control
                     as="textarea"
                     rows={3}
                     name="short_description"
@@ -79,6 +81,9 @@ const AddDish = () => {
                     placeholder="Add a short description here"
                 />
             </Form.Group>
+            {errors.short_description?.map((message, idx) =>
+                <Alert variant="warning" key={idx}>{message}</Alert>
+            )}
             <Form.Group>
                 <Form.Label>Price</Form.Label>
                 <Form.Control
@@ -89,6 +94,9 @@ const AddDish = () => {
                     placeholder="€"
                 />
             </Form.Group>
+            {errors.price?.map((message, idx) =>
+                <Alert variant="warning" key={idx}>{message}</Alert>
+            )}
             <Form.File
                 id="image-upload-dish"
                 label="Click here to upload an image of the restaurant"
@@ -97,6 +105,9 @@ const AddDish = () => {
                 ref={imageInput}
             />
             <Form.Group>
+                {errors.image?.map((message, idx) =>
+                    <Alert variant="warning" key={idx}>{message}</Alert>
+                )}
                 <Form.Label>dietary Preference</Form.Label>
                 <Form.Control
                     as="select"
@@ -112,10 +123,16 @@ const AddDish = () => {
                     <option value="kosher">Kosher</option>
                     <option value="other">other</option>
                 </Form.Control>
+                {errors.dietary_preference?.map((message, idx) =>
+                    <Alert variant="warning" key={idx}>{message}</Alert>
+                )}
             </Form.Group>
             <Button variant="primary" type="submit">
                 Add Dish
             </Button>
+            {errors.non_field_errors?.map((message, idx) =>
+                <Alert variant="warning" key={idx} className='mt-3'>{message}</Alert>
+            )}
         </Form>
     )
 }

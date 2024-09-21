@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosReq } from '../../api/axiosDefaults';
 
@@ -71,6 +71,9 @@ const RestaurantCreateForm = () => {
                         placeholder="Name of the restaurant"
                     />
                 </Form.Group>
+                {errors.name?.map((message, idx) =>
+                    <Alert variant="warning" key={idx}>{message}</Alert>
+                )}
                 <Form.Group>
                     <Form.Label>City</Form.Label>
                     <Form.Control
@@ -81,6 +84,9 @@ const RestaurantCreateForm = () => {
                         placeholder="City of the restaurant"
                     />
                 </Form.Group>
+                {errors.city?.map((message, idx) =>
+                    <Alert variant="warning" key={idx}>{message}</Alert>
+                )}
                 <Form.Group>
                     <Form.Label>Country</Form.Label>
                     <Form.Control
@@ -91,6 +97,9 @@ const RestaurantCreateForm = () => {
                         placeholder="Country of the restaurant"
                     />
                 </Form.Group>
+                {errors.country?.map((message, idx) =>
+                    <Alert variant="warning" key={idx}>{message}</Alert>
+                )}
                 <Form.File
                     id="image-upload"
                     label="Click here to upload an image of the restaurant"
@@ -99,6 +108,9 @@ const RestaurantCreateForm = () => {
                     ref={imageInput}
                 />
                 <Form.Group>
+                {errors.image?.map((message, idx) =>
+                    <Alert variant="warning" key={idx}>{message}</Alert>
+                )}
                     <Form.Label>Short description</Form.Label>
                     <Form.Control
                         as="textarea"
@@ -109,6 +121,9 @@ const RestaurantCreateForm = () => {
                         placeholder="Add a short description here"
                     />
                 </Form.Group>
+                {errors.short_description?.map((message, idx) =>
+                    <Alert variant="warning" key={idx}>{message}</Alert>
+                )}
                 <Form.Group>
                     <Form.Label>Cuisine Type</Form.Label>
                     <Form.Control
@@ -132,6 +147,9 @@ const RestaurantCreateForm = () => {
                         <option value="other">Other</option>
                     </Form.Control>
                 </Form.Group>
+                {errors.cuisine_type?.map((message, idx) =>
+                    <Alert variant="warning" key={idx}>{message}</Alert>
+                )}
                 <Button variant="primary" type="submit">
                     Add restaurant
                 </Button>
@@ -142,6 +160,9 @@ const RestaurantCreateForm = () => {
                 >
                     Cancel
                 </Button>
+                {errors.non_field_errors?.map((message, idx) =>
+                    <Alert className='mt-3' variant="warning" key={idx}>{message}</Alert>
+                )}
             </Form>
         </>
     )

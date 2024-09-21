@@ -5,7 +5,6 @@ import { Form, Button } from 'react-bootstrap';
 import { axiosReq } from '../api/axiosDefaults';
 
 const AddReview = () => {
-    const [errors, setErrors] = useState({});
     const currentUser = useCurrentUser();
     const { id } = useParams();
     const [review, setReview] = useState({
@@ -31,10 +30,7 @@ const AddReview = () => {
         try {
             await axiosReq.post('/reviews/', formDataReview);
         } catch(err) {
-            console.log(err);
-            if (err.response?.status !== 401){
-                setErrors(err.response?.data);
-            }
+
         }
     }
 
