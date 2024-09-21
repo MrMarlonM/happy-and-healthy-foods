@@ -8,14 +8,19 @@ import SignInForm from './pages/auth/SignInForm';
 import RestaurantCreateForm from './pages/restaurants/RestaurantCreateForm';
 import RestaurantPage from './pages/restaurants/RestaurantPage';
 import RestaurantList from './pages/restaurants/RestaurantList';
+import { useCurrentUser } from './contexts/CurrentUserContext';
 
 function App() {
+  const currentUser = useCurrentUser();
+  const userId = currentUser?.username || "";
+
   return (
     <div className={styles.App}>
       <NavBar />
       <Container className={styles.Main}>
         <Switch>
           <Route exact path='/' render={() => <RestaurantList/>} />
+          <Route exact path='/myrestaurants' render={() => <RestaurantList filter={`created_by__username=${userId}`}/>} />
           <Route exact path='/signin' render={() => <SignInForm />} />
           <Route exact path='/signup' render={() => <SignUpForm />} />
           <Route exact path ='/create' render={() => <RestaurantCreateForm/>} />

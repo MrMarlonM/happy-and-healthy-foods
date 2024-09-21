@@ -1,8 +1,13 @@
 import React from 'react';
-import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Button, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Link, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Restaurant = (props) => {
+    const location = useLocation();
+    const isRestaurantListPage = location.pathname === '/';
+
     const {
+        id,
         created_by,
         name,
         city,
@@ -32,8 +37,9 @@ const Restaurant = (props) => {
                     <ListGroupItem>{cuisine_type}</ListGroupItem>
                 </ListGroup>
                 <Card.Body>
-                    <Card.Link href="#">Card Link</Card.Link>
-                    <Card.Link href="#">Another Link</Card.Link>
+                    {isRestaurantListPage && <Link to={`/restaurants/${id}`}>
+                        <Button>Click here for more infos</Button>
+                    </Link>}
                 </Card.Body>
             </Card>
         </>

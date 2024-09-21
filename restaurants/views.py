@@ -23,6 +23,7 @@ class RestaurantList(generics.ListCreateAPIView):
     filterset_fields = [
         'cuisine_type',
         'dish__dietary_preference',
+        'created_by__username',
     ]
     search_fields = [
         'name',
