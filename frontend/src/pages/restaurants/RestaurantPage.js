@@ -5,6 +5,7 @@ import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { axiosReq } from '../../api/axiosDefaults';
 import AddDish from '../../components/AddDish';
 import Restaurant from './Restaurant';
+import AddReview from '../../components/AddReview';
 
 const RestaurantPage = () => {
   const { id } = useParams();
@@ -36,7 +37,7 @@ const RestaurantPage = () => {
           {is_creator && <AddDish />}
         </Col>
         <Col>
-          Example
+          <AddReview/>
         </Col>
       </Row>
     </>
