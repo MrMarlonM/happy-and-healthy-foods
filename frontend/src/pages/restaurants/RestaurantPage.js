@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Card, Col, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
+import { Card, Col, ListGroup, ListGroupItem, Row, Button } from 'react-bootstrap';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { axiosReq } from '../../api/axiosDefaults';
 import AddDish from '../../components/AddDish';
 import Restaurant from './Restaurant';
-import AddReview from '../../components/AddReview';
+import AddReview from '../reviews/AddReview';
+import Review from '../reviews/Review';
 
 const RestaurantPage = () => {
   const { id } = useParams();
   const [restaurant, setRestaurant] = useState({ results: [] });
   const [dishes, setDishes] = useState({ results: [] });
-  const [reviews, setReviews] = useState({results: []});
+  const [reviews, setReviews] = useState({ results: [] });
   const { created_by } = { ...restaurant.results[0] };
 
   useEffect(() => {
@@ -22,10 +23,10 @@ const RestaurantPage = () => {
           { data: dishes },
           { data: reviews },
         ] = await Promise.all([
-            axiosReq.get(`/restaurants/${id}`),
-            axiosReq.get(`/dishes/?restaurant=${id}`),
-            axiosReq.get(`/reviews/?restaurant=${id}`),
-          ]);
+          axiosReq.get(`/restaurants/${id}`),
+          axiosReq.get(`/dishes/?restaurant=${id}`),
+          axiosReq.get(`/reviews/?restaurant=${id}`),
+        ]);
         setRestaurant({ results: [restaurant] });
         setDishes(dishes);
         setReviews(reviews);
@@ -55,7 +56,7 @@ const RestaurantPage = () => {
           {currentUser ? <AddReview /> : "Reviews"}
           {reviews.results.length ? (
             reviews.results.map(review => (
-              <p key={review.id}>{review.content}</p>
+              <Review key={review.id} {...review} setReviews={setReviews}/>
             ))
           ) : "No reviews yet, be the first to write one!"}
         </Col>

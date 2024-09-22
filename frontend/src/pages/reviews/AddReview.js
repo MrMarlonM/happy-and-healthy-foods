@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
-import { useCurrentUser } from '../contexts/CurrentUserContext';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { Form, Button } from 'react-bootstrap';
-import { axiosReq } from '../api/axiosDefaults';
+import { axiosReq } from '../../api/axiosDefaults';
 
 const AddReview = () => {
     const currentUser = useCurrentUser();
