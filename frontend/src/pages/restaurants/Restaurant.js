@@ -1,10 +1,14 @@
 import React from 'react';
 import { Button, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
-import { Link, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link, useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import { axiosRes } from '../../api/axiosDefaults';
 
 const Restaurant = (props) => {
     const location = useLocation();
     const isRestaurantListPage = location.pathname === '/' || location.pathname === '/myrestaurants';
+    const currentUser = useCurrentUser();
+    const history = useHistory();
 
     const {
         id,
@@ -20,6 +24,17 @@ const Restaurant = (props) => {
         like_count,
         review_count,
       } = props;
+
+    const is_creator = created_by === currentUser?.username;
+
+    const handleDelete = async () => {
+        try {
+            await axiosRes.delete(`/restaurants/${id}`)
+            history.push('/myrestaurants');
+        } catch(err){
+
+        }
+    }
 
     return (
         <>
@@ -40,6 +55,10 @@ const Restaurant = (props) => {
                     {isRestaurantListPage && <Link to={`/restaurants/${id}`}>
                         <Button>Click here for more infos</Button>
                     </Link>}
+                    {is_creator && <Link>
+                        <Button>Edit restaurant</Button>
+                    </Link>}
+                    {is_creator && <Button onClick={handleDelete}>Delete restaurant</Button>}
                 </Card.Body>
             </Card>
         </>

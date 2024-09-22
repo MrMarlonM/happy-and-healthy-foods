@@ -12,7 +12,7 @@ import { useCurrentUser } from './contexts/CurrentUserContext';
 
 function App() {
   const currentUser = useCurrentUser();
-  const userId = currentUser?.username || "";
+  const username = currentUser?.username || "";
 
   return (
     <div className={styles.App}>
@@ -20,7 +20,7 @@ function App() {
       <Container className={styles.Main}>
         <Switch>
           <Route exact path='/' render={() => <RestaurantList/>} />
-          <Route exact path='/myrestaurants' render={() => <RestaurantList filter={`created_by__username=${userId}`}/>} />
+          <Route exact path='/myrestaurants' render={() => <RestaurantList filter={`created_by__username=${username}`}/>} />
           <Route exact path='/signin' render={() => <SignInForm />} />
           <Route exact path='/signup' render={() => <SignUpForm />} />
           <Route exact path ='/create' render={() => <RestaurantCreateForm/>} />

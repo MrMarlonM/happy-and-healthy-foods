@@ -47,7 +47,7 @@ const RestaurantPage = () => {
           {is_creator ? <AddDish /> : "Dishes"}
           {dishes.results.length ? (
             dishes.results.map(dish => (
-              <p>{dish.name}</p>
+              <p key={dish.id}>{dish.name}</p>
             ))
           ) : "No dishes added yet..."}
         </Col>
@@ -55,7 +55,7 @@ const RestaurantPage = () => {
           {currentUser ? <AddReview /> : "Reviews"}
           {reviews.results.length ? (
             reviews.results.map(review => (
-              <p>{review.content}</p>
+              <p key={review.id}>{review.content}</p>
             ))
           ) : "No reviews yet, be the first to write one!"}
         </Col>
