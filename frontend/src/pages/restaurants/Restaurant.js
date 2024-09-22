@@ -26,6 +26,10 @@ const Restaurant = (props) => {
       } = props;
 
     const is_creator = created_by === currentUser?.username;
+    
+    const handleEdit = () => {
+        history.push(`/restaurants/${id}/edit`)
+    }
 
     const handleDelete = async () => {
         try {
@@ -55,9 +59,7 @@ const Restaurant = (props) => {
                     {isRestaurantListPage && <Link to={`/restaurants/${id}`}>
                         <Button>Click here for more infos</Button>
                     </Link>}
-                    {is_creator && <Link>
-                        <Button>Edit restaurant</Button>
-                    </Link>}
+                    {is_creator && <Button onClick={handleEdit}>Edit restaurant</Button>}
                     {is_creator && <Button onClick={handleDelete}>Delete restaurant</Button>}
                 </Card.Body>
             </Card>

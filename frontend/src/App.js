@@ -9,6 +9,7 @@ import RestaurantCreateForm from './pages/restaurants/RestaurantCreateForm';
 import RestaurantPage from './pages/restaurants/RestaurantPage';
 import RestaurantList from './pages/restaurants/RestaurantList';
 import { useCurrentUser } from './contexts/CurrentUserContext';
+import RestaurantEdit from './pages/restaurants/RestaurantEdit';
 
 function App() {
   const currentUser = useCurrentUser();
@@ -25,6 +26,7 @@ function App() {
           <Route exact path='/signup' render={() => <SignUpForm />} />
           <Route exact path ='/create' render={() => <RestaurantCreateForm/>} />
           <Route exact path='/restaurants/:id' render={() => <RestaurantPage/>} />
+          <Route exact path='/restaurants/:id/edit' render={() => <RestaurantEdit/>} />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>
