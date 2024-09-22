@@ -13,8 +13,9 @@ const RestaurantList = ({ filter = "" }) => {
         const fetchRestaurants = async () => {
             try {
               const params = new URLSearchParams(); 
-              if (filter) {
-                params.append('created_by', filter); 
+              if (filter && filter.startsWith('created_by__username=')) {
+                const username = filter.split('=')[1];
+                params.append('created_by__username', username); 
               }
               if (query) {
                 params.append('search', query);
