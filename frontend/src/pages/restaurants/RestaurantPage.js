@@ -49,7 +49,7 @@ const RestaurantPage = () => {
           {is_creator ? <AddDish /> : "Dishes"}
           {dishes.results.length ? (
             dishes.results.map(dish => (
-              <Dish key={dish.id} {...dish} is_creator={is_creator} setDishes={setDishes}/>
+              <Dish key={dish.id} {...dish} is_creator={is_creator} setDishes={setDishes} dishes={dishes}/>
             ))
           ) : "No dishes added yet..."}
         </Col>
