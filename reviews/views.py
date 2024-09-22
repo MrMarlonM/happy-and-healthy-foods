@@ -1,4 +1,5 @@
 from rest_framework import generics, permissions, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import Review
 from .serializers import ReviewSerializer, ReviewDetailSerializer
 from drf_api.permissions import IsOwnerOrReadOnly
@@ -13,6 +14,10 @@ class ReviewList(generics.ListCreateAPIView):
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
+    filterset_fields = [
+        'restaurant',
     ]
     search_fields = [
         'created_by',

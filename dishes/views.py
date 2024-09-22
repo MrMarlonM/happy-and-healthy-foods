@@ -16,6 +16,7 @@ class DishList(generics.ListCreateAPIView):
     ]
     filterset_fields = [
         'dietary_preference',
+        'restaurant',
     ]
     search_fields = [
         'name',
