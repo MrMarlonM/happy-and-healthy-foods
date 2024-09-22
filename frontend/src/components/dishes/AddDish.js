@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import { axiosReq } from '../api/axiosDefaults';
+import { axiosReq } from '../../api/axiosDefaults';
 
 const AddDish = () => {
     const [errors, setErrors] = useState({});

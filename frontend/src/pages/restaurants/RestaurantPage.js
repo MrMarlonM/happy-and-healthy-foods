@@ -3,10 +3,11 @@ import { useParams } from 'react-router-dom';
 import { Card, Col, ListGroup, ListGroupItem, Row, Button } from 'react-bootstrap';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { axiosReq } from '../../api/axiosDefaults';
-import AddDish from '../../components/AddDish';
+import AddDish from '../../components/dishes/AddDish';
 import Restaurant from './Restaurant';
-import AddReview from '../reviews/AddReview';
-import Review from '../reviews/Review';
+import AddReview from '../../components/reviews/AddReview';
+import Review from '../../components/reviews/Review';
+import Dish from '../../components/dishes/Dish';
 
 const RestaurantPage = () => {
   const { id } = useParams();
@@ -48,7 +49,7 @@ const RestaurantPage = () => {
           {is_creator ? <AddDish /> : "Dishes"}
           {dishes.results.length ? (
             dishes.results.map(dish => (
-              <p key={dish.id}>{dish.name}</p>
+              <Dish key={dish.id} {...dish} is_creator={is_creator} setDishes={setDishes}/>
             ))
           ) : "No dishes added yet..."}
         </Col>
