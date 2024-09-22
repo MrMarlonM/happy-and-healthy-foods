@@ -4,17 +4,18 @@ import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { Form, Button } from 'react-bootstrap';
 import { axiosReq } from '../../api/axiosDefaults';
 
-const AddReview = () => {
+const AddReview = (props) => {
     const currentUser = useCurrentUser();
     const { id } = useParams();
-    const [review, setReview] = useState({
+    const [reviewData, setReviewData] = useState({
         content: "",
     });
-    const { content } = review;
+    const { content } = reviewData;
+    const { setReviews } = props;
 
     const handleChange = event => {
-        setReview({
-            ...review,
+        setReviewData({
+            ...reviewData,
             [event.target.name]: event.target.value,
         });
     };
@@ -28,7 +29,12 @@ const AddReview = () => {
         formDataReview.append('content', content)
 
         try {
-            await axiosReq.post('/reviews/', formDataReview);
+            const {data} = await axiosReq.post('/reviews/', formDataReview);
+            setReviews((prevReviews) => ({
+                ...prevReviews,
+                results: [data, ...prevReviews.results],
+            }))
+            setReviewData({content: ""});
         } catch(err) {
 
         }

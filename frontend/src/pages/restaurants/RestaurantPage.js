@@ -53,7 +53,7 @@ const RestaurantPage = () => {
           ) : "No dishes added yet..."}
         </Col>
         <Col>
-          {currentUser ? <AddReview /> : "Reviews"}
+          {currentUser ? <AddReview setReviews={setReviews} /> : "Reviews"}
           {reviews.results.length ? (
             reviews.results.map(review => (
               <Review key={review.id} {...review} setReviews={setReviews}/>
