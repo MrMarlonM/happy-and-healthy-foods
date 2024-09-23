@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { axiosReq, axiosRes } from '../../api/axiosDefaults';
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import styles from '../../styles/RestaurantForm.module.css';
 
 const RestaurantEdit = () => {
     const [errors, setErrors] = useState({});
@@ -79,7 +80,7 @@ const RestaurantEdit = () => {
 
     return (
         <>
-            <Form onSubmit={handleSubmit}>
+            <Form className={styles.Form} onSubmit={handleSubmit}>
                 <Form.Group>
                     <Form.Label>Name</Form.Label>
                     <Form.Control
@@ -174,7 +175,7 @@ const RestaurantEdit = () => {
                 </Button>
                 <Button
                     className="mx-2"
-                    variant="primary"
+                    variant="danger"
                     onClick={() => history.goBack()}
                 >
                     Cancel
