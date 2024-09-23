@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import { Button } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import { axiosRes } from '../../api/axiosDefaults';
 import EditReview from './EditReview';
+import styles from "../../styles/Restaurant.module.css"
 
 const Review = (props) => {
     const currentUser = useCurrentUser();
@@ -34,21 +35,29 @@ const Review = (props) => {
     return (
         <div>
             {showEditForm ? (
-                <EditReview 
+                <EditReview
                     content={content}
                     setShowEditForm={setShowEditForm}
                     id={id}
                     setReviews={setReviews}
                 />
-            ) : 
-                <p>{content}</p>
+            ) :
+                <Card className={`${styles.Form} my-3`}>
+                    <Card.Body>
+                        <Card.Subtitle className="mb-2 text-muted">
+                            <span className='mx-1'>{created_by}</span>
+                            <span className='mx-1'>{updated_at}</span>
+                        </Card.Subtitle>
+                        <Card.Text>
+                            {content}
+                        </Card.Text>
+                        {is_creator && !showEditForm && <div>
+                            <Button className='mx-1' onClick={() => setShowEditForm(true)}>Edit</Button>
+                            <Button variant='danger' className='mx-1' onClick={handleDelete}>Delete</Button>
+                        </div>}
+                    </Card.Body>
+                </Card>
             }
-            <span>{created_by}</span>
-            <span>{updated_at}</span>
-            {is_creator && !showEditForm && <div>
-                <Button onClick={() => setShowEditForm(true)}>Edit</Button>
-                <Button onClick={handleDelete}>Delete</Button>
-            </div>}
         </div>
     )
 }
