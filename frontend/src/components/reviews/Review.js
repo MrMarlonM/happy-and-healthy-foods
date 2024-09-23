@@ -3,7 +3,6 @@ import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { Button, Card } from 'react-bootstrap';
 import { axiosRes } from '../../api/axiosDefaults';
 import EditReview from './EditReview';
-import styles from "../../styles/Restaurant.module.css"
 
 const Review = (props) => {
     const currentUser = useCurrentUser();
@@ -42,7 +41,7 @@ const Review = (props) => {
                     setReviews={setReviews}
                 />
             ) :
-                <Card className={`${styles.Form} my-3`}>
+                <Card className="my-2">
                     <Card.Body>
                         <Card.Subtitle className="mb-2 text-muted">
                             <span className='mx-1'>{created_by}</span>

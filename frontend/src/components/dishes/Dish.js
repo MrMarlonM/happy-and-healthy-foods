@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { Button, Container } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import { axiosRes } from '../../api/axiosDefaults';
 import EditDish from './EditDish';
+import styles from "../../styles/Restaurant.module.css";
 
 const Dish = (props) => {
     const {
@@ -13,6 +14,7 @@ const Dish = (props) => {
         price,
         image,
         dietary_preference,
+        updated_at,
     } = props;
 
     const [showEditDish, setShowEditDish] = useState(false);
@@ -32,21 +34,28 @@ const Dish = (props) => {
     return (
         <>
             {showEditDish ? (
-                <EditDish 
-                id={id}
-                setShowEditDish={setShowEditDish}
-                setDishes={setDishes}
+                <EditDish
+                    id={id}
+                    setShowEditDish={setShowEditDish}
+                    setDishes={setDishes}
                 />
             ) : (
-                <Container>
-                    <img src={image} alt={name} height={40} />
-                    <p>{name}</p>
-                    <p>{price}</p>
-                    <p>{dietary_preference}</p>
-                    <p>{short_description}</p>
-                    {is_creator && <Button onClick={handleDelete}>Delete</Button>}
-                    {is_creator && <Button onClick={() => setShowEditDish(true)}>Edit</Button>}
-                </Container>
+                <Card className='my-2'>
+                    <Card.Img className={styles.Image} variant="top" src={image} alt={name} />
+                    <Card.Header as="h5">{dietary_preference}</Card.Header>
+                    <Card.Body>
+                        <Card.Title>{name}</Card.Title>
+                        <Card.Text>
+                            Price: {price} €
+                        </Card.Text>
+                        <Card.Text>
+                            {short_description}
+                        </Card.Text>
+                        <Card.Text className='text-muted'>Last updated at: {updated_at}</Card.Text>
+                        {is_creator && <Button className='mx-1' onClick={handleDelete}>Delete</Button>}
+                        {is_creator && <Button variant='danger' className='mx-1' onClick={() => setShowEditDish(true)}>Edit</Button>}
+                    </Card.Body>
+                </Card>
             )}
         </>
     )
