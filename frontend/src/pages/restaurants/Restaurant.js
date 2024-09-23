@@ -72,7 +72,7 @@ const Restaurant = (props) => {
                 </ListGroup>
                 <Card.Body>
                     {isRestaurantListPage && <Link to={`/restaurants/${id}`}>
-                        <Button block>Click here for more infos</Button>
+                        <Button variant='link' block>Click here for more infos...</Button>
                     </Link>}
                 </Card.Body>
                 {is_creator && <Card.Body className={styles.ItemsCenter}>

@@ -46,7 +46,7 @@ const RestaurantPage = () => {
       <Restaurant {...restaurant.results[0]} />
       <Row>
         <Col>
-          {is_creator ? <AddDish /> : "Dishes"}
+          {is_creator ? <AddDish setDishes={setDishes} /> : <h2>Dishes</h2>}
           {dishes.results.length ? (
             dishes.results.map(dish => (
               <Dish key={dish.id} {...dish} is_creator={is_creator} setDishes={setDishes} dishes={dishes}/>

@@ -4,13 +4,14 @@ import { useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import styles from '../../styles/RestaurantForm.module.css';
 
-const AddDish = () => {
+const AddDish = (props) => {
     const [errors, setErrors] = useState({});
+    const { setDishes } = props;
     const { id } = useParams();
     const [dishData, setDishData] = useState({
         name: "",
         short_description: "",
-        price: 0,
+        price: "",
         image: "",
         dietary_preference: "vegetarian",
     });
@@ -47,7 +48,18 @@ const AddDish = () => {
         formDataDish.append('dietary_preference', dietary_preference)
 
         try {
-            await axiosReq.post('/dishes/', formDataDish);
+            const {data} = await axiosReq.post('/dishes/', formDataDish);
+            setDishes((prevDishes) => ({
+                ...prevDishes,
+                results: [data, ...prevDishes.results],
+            }));
+            setDishData({
+                name: "",
+                short_description: "",
+                price: "",
+                image: "",
+                dietary_preference: "vegetarian",
+            });
         } catch (err) {
             console.log(err);
             if (err.response?.status !== 401) {
