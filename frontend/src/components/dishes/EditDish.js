@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { axiosReq, axiosRes } from '../../api/axiosDefaults';
+import styles from '../../styles/RestaurantForm.module.css';
 
 const EditDish = (props) => {
     const { id, setShowEditDish, setDishes } = props;
@@ -85,7 +86,8 @@ const EditDish = (props) => {
     }
 
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form className={styles.Form} onSubmit={handleSubmit}>
+            <h3>Edit Dish</h3>
             <Form.Group>
                 <Form.Label>Name</Form.Label>
                 <Form.Control

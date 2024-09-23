@@ -43,6 +43,7 @@ const AddReview = (props) => {
 
   return (
     <Form className={styles.Form} onSubmit={handleSubmit}>
+        <h3>Add new Review</h3>
         <Form.Group>
             <Form.Label>Content</Form.Label>
             <Form.Control

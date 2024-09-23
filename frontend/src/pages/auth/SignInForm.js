@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import styles from '../../styles/RestaurantForm.module.css';
 
@@ -16,19 +16,19 @@ const SignInForm = () => {
         username: "",
         password: "",
     });
-    const {username, password} = signInData;
-    
+    const { username, password } = signInData;
+
     const history = useHistory();
-    
+
     const [errors, setErrors] = useState({});
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const {data} = await axios.post('dj-rest-auth/login/', signInData);
+            const { data } = await axios.post('dj-rest-auth/login/', signInData);
             setCurrentUser(data.user);
             history.push('/');
-        } catch(err) {
+        } catch (err) {
             setErrors(err.response?.data)
             console.log(err.response.data)
         }
@@ -42,46 +42,44 @@ const SignInForm = () => {
     };
 
 
-  return (
-    <Container>
-            <h1>Sign in</h1>
-            <Form className={styles.Form} onSubmit={handleSubmit}>
-                <Form.Group controlId="username">
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control 
-                        type="text"
-                        placeholder="Enter your username"
-                        name="username"
-                        value={username}
-                        onChange={handleChange}
-                    />
-                </Form.Group>
-                {errors.username?.map((message, idx) => 
-                    <Alert variant="warning" key={idx}>{message}</Alert>
-                )}
+    return (
+        <Form className={styles.Form} onSubmit={handleSubmit}>
+            <h2 className="text-center">Sign in</h2>
+            <Form.Group controlId="username">
+                <Form.Label>Username</Form.Label>
+                <Form.Control
+                    type="text"
+                    placeholder="Enter your username"
+                    name="username"
+                    value={username}
+                    onChange={handleChange}
+                />
+            </Form.Group>
+            {errors.username?.map((message, idx) =>
+                <Alert variant="warning" key={idx}>{message}</Alert>
+            )}
 
-                <Form.Group controlId="password">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control 
-                        type="password"
-                        placeholder="Enter your password"
-                        name="password"
-                        value={password}
-                        onChange={handleChange}
-                    />
-                </Form.Group>
-                {errors.password?.map((message, idx) => 
-                    <Alert variant="warning" key={idx}>{message}</Alert>
-                )}
-                <Button variant="primary" type="submit">
-                    Sign in
-                </Button>
-                {errors.non_field_errors?.map((message, idx) => 
-                    <Alert variant="warning" key={idx} className='mt-3'>{message}</Alert>
-                )}
-            </Form>
-        </Container>
-  )
+            <Form.Group controlId="password">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                    type="password"
+                    placeholder="Enter your password"
+                    name="password"
+                    value={password}
+                    onChange={handleChange}
+                />
+            </Form.Group>
+            {errors.password?.map((message, idx) =>
+                <Alert variant="warning" key={idx}>{message}</Alert>
+            )}
+            <Button variant="primary" type="submit">
+                Sign in
+            </Button>
+            {errors.non_field_errors?.map((message, idx) =>
+                <Alert variant="warning" key={idx} className='mt-3'>{message}</Alert>
+            )}
+        </Form>
+    )
 }
 
 export default SignInForm

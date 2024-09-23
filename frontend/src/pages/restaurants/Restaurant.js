@@ -60,7 +60,7 @@ const Restaurant = (props) => {
                 {currentUser && <Button variant='secondary' onClick={handleSaveRestaurant}>Save as favorite</Button>}
                 <Card.Img className={styles.Image} variant="top" src={image} />
                 <Card.Body>
-                    <Card.Title><bold>{name}</bold></Card.Title>
+                    <Card.Title><h3>{name}</h3></Card.Title>
                     <Card.Text className={styles.Italic}>
                         {cuisine_type}
                     </Card.Text>

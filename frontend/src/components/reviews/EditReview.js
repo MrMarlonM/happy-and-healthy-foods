@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { axiosRes } from '../../api/axiosDefaults';
+import styles from '../../styles/RestaurantForm.module.css';
 
 const EditReview = (props) => {
     const {
@@ -40,7 +41,8 @@ const EditReview = (props) => {
 
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className={styles.Form} onSubmit={handleSubmit}>
+        <h3>Edit Review</h3>
         <Form.Group>
             <Form.Label>Content</Form.Label>
             <Form.Control

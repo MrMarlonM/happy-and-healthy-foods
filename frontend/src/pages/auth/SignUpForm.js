@@ -34,9 +34,8 @@ const SignUpForm = () => {
     };
 
     return (
-        <Container>
-            <h1>Sign up</h1>
             <Form className={styles.Form} onSubmit={handleSubmit}>
+                <h2 className='text-center'>Sign Up</h2>
                 <Form.Group controlId="username">
                     <Form.Label>Username</Form.Label>
                     <Form.Control 
@@ -85,7 +84,6 @@ const SignUpForm = () => {
                     <Alert variant="warning" key={idx} className='mt-3'>{message}</Alert>
                 )}
             </Form>
-        </Container>
     )
 }
 

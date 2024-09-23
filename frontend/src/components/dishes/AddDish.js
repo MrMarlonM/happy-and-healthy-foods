@@ -58,6 +58,7 @@ const AddDish = () => {
 
     return (
         <Form className={styles.Form} onSubmit={handleSubmit}>
+            <h3>Add new Dish</h3>
             <Form.Group>
                 <Form.Label>Name</Form.Label>
                 <Form.Control

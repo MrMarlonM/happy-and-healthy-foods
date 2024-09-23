@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { axiosReq } from '../../api/axiosDefaults';
 import Restaurant from './Restaurant';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
-import { Form, Row, Col } from 'react-bootstrap';
+import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import SavedRestaurants from '../../components/SavedRestaurants';
 
@@ -35,6 +35,8 @@ const RestaurantList = ({ filter = "" }) => {
 
   return (
     <>
+      {pathname === "/" ? <h2>Restaurants</h2> : <h2>My Restaurants</h2>}
+      {}
       <Row>
         <Col md={8}>
           {restaurants?.results.map(restaurant => (
