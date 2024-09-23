@@ -6,6 +6,7 @@ import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import {useHistory} from 'react-router-dom';
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import styles from '../../styles/RestaurantForm.module.css';
 
 
 const SignInForm = () => {
@@ -44,7 +45,7 @@ const SignInForm = () => {
   return (
     <Container>
             <h1>Sign in</h1>
-            <Form onSubmit={handleSubmit}>
+            <Form className={styles.Form} onSubmit={handleSubmit}>
                 <Form.Group controlId="username">
                     <Form.Label>Username</Form.Label>
                     <Form.Control 

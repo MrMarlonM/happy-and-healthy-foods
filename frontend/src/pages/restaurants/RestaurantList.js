@@ -46,12 +46,12 @@ const RestaurantList = ({ filter = "" }) => {
         />
       </Form>
       <Row>
-        <Col>
+        <Col md={8}>
           {restaurants?.results.map(restaurant => (
             <Restaurant key={restaurant.id} {...restaurant} />
           ))}
         </Col>
-        {currentUser && <Col>
+        {currentUser && <Col md={4}>
         <div>
           <h3>Filters</h3>
         </div>

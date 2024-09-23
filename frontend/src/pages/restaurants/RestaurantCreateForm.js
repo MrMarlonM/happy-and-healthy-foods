@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosReq } from '../../api/axiosDefaults';
+import styles from '../../styles/RestaurantForm.module.css';
 
 const RestaurantCreateForm = () => {
     const [errors, setErrors] = useState({});
@@ -60,7 +61,7 @@ const RestaurantCreateForm = () => {
 
     return (
         <>
-            <Form onSubmit={handleSubmit}>
+            <Form className={styles.Form} onSubmit={handleSubmit}>
                 <Form.Group>
                     <Form.Label>Name</Form.Label>
                     <Form.Control
@@ -108,9 +109,9 @@ const RestaurantCreateForm = () => {
                     ref={imageInput}
                 />
                 <Form.Group>
-                {errors.image?.map((message, idx) =>
-                    <Alert variant="warning" key={idx}>{message}</Alert>
-                )}
+                    {errors.image?.map((message, idx) =>
+                        <Alert variant="warning" key={idx}>{message}</Alert>
+                    )}
                     <Form.Label>Short description</Form.Label>
                     <Form.Control
                         as="textarea"
@@ -150,16 +151,19 @@ const RestaurantCreateForm = () => {
                 {errors.cuisine_type?.map((message, idx) =>
                     <Alert variant="warning" key={idx}>{message}</Alert>
                 )}
-                <Button variant="primary" type="submit">
-                    Add restaurant
-                </Button>
-                <Button
-                    className="mx-2"
-                    variant="primary"
-                    onClick={() => history.goBack()}
-                >
-                    Cancel
-                </Button>
+                <div className={styles.ItemsCenter}>
+                    <Button variant="primary" size='md' type="submit">
+                        Add restaurant
+                    </Button>
+                    <Button
+                        className="mx-2"
+                        variant="info"
+                        size="md"
+                        onClick={() => history.goBack()}
+                    >
+                        Cancel
+                    </Button>
+                </div>
                 {errors.non_field_errors?.map((message, idx) =>
                     <Alert className='mt-3' variant="warning" key={idx}>{message}</Alert>
                 )}

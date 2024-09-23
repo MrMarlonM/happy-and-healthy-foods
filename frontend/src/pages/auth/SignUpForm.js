@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import {Container, Form, Button, Alert} from 'react-bootstrap';
+import styles from '../../styles/RestaurantForm.module.css';
 
 const SignUpForm = () => {
     const [signUpData, setSignUpData] = useState({
@@ -35,7 +36,7 @@ const SignUpForm = () => {
     return (
         <Container>
             <h1>Sign up</h1>
-            <Form onSubmit={handleSubmit}>
+            <Form className={styles.Form} onSubmit={handleSubmit}>
                 <Form.Group controlId="username">
                     <Form.Label>Username</Form.Label>
                     <Form.Control 

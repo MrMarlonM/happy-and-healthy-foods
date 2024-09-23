@@ -1,0 +1,17 @@
+.Form {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+    box-shadow: 2px 2px lightgray;
+}
+
+.FormControl {
+    background-color: rgb(243, 240, 240);
+    border-color: darkgray;
+}
+
+.ItemsCenter {
+    display: flex;
+    justify-content:center;
+}

@@ -1,0 +1,22 @@
+.Restaurant {
+    box-shadow: 2px 2px lightgray;
+    margin: 5px 5px;
+}
+
+.Image {
+    max-height: 30vh;
+    object-fit:cover;
+}
+
+.Button {
+    margin: 0 5px;
+}
+
+.ItemsCenter {
+    display: flex;
+    justify-content:center;
+}
+
+.Italic {
+    font-style: italic;
+}

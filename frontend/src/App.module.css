@@ -1,9 +1,14 @@
 .App {
     font-family: 'DM Sans', sans-serif;
-    background-color: rgb(228, 248, 209);
+    background-color: rgb(197, 255, 170);
     min-height: 100vh;
 }
 
 .Main {
     padding-top: 60px;
+}
+
+.Image {
+    max-width: 100%;
+    object-fit: contain;
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from "../../styles/Restaurant.module.css"
 import { Button, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { Link, useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
@@ -55,27 +56,29 @@ const Restaurant = (props) => {
 
     return (
         <>
-            <Card>
-                {currentUser && <Button onClick={handleSaveRestaurant}>Save as favorite</Button>}
-                <Card.Img variant="top" src={image} height="250px" />
+            <Card className={styles.Restaurant}>
+                {currentUser && <Button variant='light' onClick={handleSaveRestaurant}>Save as favorite</Button>}
+                <Card.Img className={styles.Image} variant="top" src={image} />
                 <Card.Body>
-                    <Card.Title>{name}</Card.Title>
-                    <Card.Text>
-                        {short_description}
+                    <Card.Title><bold>{name}</bold></Card.Title>
+                    <Card.Text className={styles.Italic}>
+                        {cuisine_type}
                     </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
-                    <ListGroupItem>{country}</ListGroupItem>
-                    <ListGroupItem>{city}</ListGroupItem>
-                    <ListGroupItem>{cuisine_type}</ListGroupItem>
+                    <ListGroupItem>Short Description: <br/>{short_description}</ListGroupItem>
+                    <ListGroupItem>Country: <br/>{country}</ListGroupItem>
+                    <ListGroupItem>City: <br/>{city}</ListGroupItem>
                 </ListGroup>
                 <Card.Body>
                     {isRestaurantListPage && <Link to={`/restaurants/${id}`}>
-                        <Button>Click here for more infos</Button>
+                        <Button block>Click here for more infos</Button>
                     </Link>}
-                    {is_creator && <Button onClick={handleEdit}>Edit restaurant</Button>}
-                    {is_creator && <Button onClick={handleDelete}>Delete restaurant</Button>}
                 </Card.Body>
+                {is_creator && <Card.Body className={styles.ItemsCenter}>
+                    <Button className={styles.Button} variant='info' onClick={handleEdit}>Edit restaurant</Button>
+                    <Button className={styles.Button} variant='danger' onClick={handleDelete}>Delete restaurant</Button>
+                </Card.Body>}
             </Card>
         </>
     )
