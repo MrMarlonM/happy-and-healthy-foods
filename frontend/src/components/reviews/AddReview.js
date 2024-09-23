@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { Form, Button } from 'react-bootstrap';
 import { axiosReq } from '../../api/axiosDefaults';
+import styles from '../../styles/RestaurantForm.module.css';
 
 const AddReview = (props) => {
     const currentUser = useCurrentUser();
@@ -41,7 +42,7 @@ const AddReview = (props) => {
     }
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className={styles.Form} onSubmit={handleSubmit}>
         <Form.Group>
             <Form.Label>Content</Form.Label>
             <Form.Control

@@ -57,7 +57,7 @@ const Restaurant = (props) => {
     return (
         <>
             <Card className={styles.Restaurant}>
-                {currentUser && <Button variant='light' onClick={handleSaveRestaurant}>Save as favorite</Button>}
+                {currentUser && <Button variant='secondary' onClick={handleSaveRestaurant}>Save as favorite</Button>}
                 <Card.Img className={styles.Image} variant="top" src={image} />
                 <Card.Body>
                     <Card.Title><bold>{name}</bold></Card.Title>

@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
+import styles from '../../styles/RestaurantForm.module.css';
 
 const AddDish = () => {
     const [errors, setErrors] = useState({});
@@ -56,7 +57,7 @@ const AddDish = () => {
     }
 
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form className={styles.Form} onSubmit={handleSubmit}>
             <Form.Group>
                 <Form.Label>Name</Form.Label>
                 <Form.Control
