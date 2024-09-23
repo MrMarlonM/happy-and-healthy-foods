@@ -35,30 +35,30 @@ const RestaurantList = ({ filter = "" }) => {
 
   return (
     <>
-      <Form
-        onSubmit={(event) => event.preventDefault()}
-      >
-        <Form.Control
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          type="text"
-          placeholder="search posts"
-        />
-      </Form>
       <Row>
         <Col md={8}>
           {restaurants?.results.map(restaurant => (
             <Restaurant key={restaurant.id} {...restaurant} />
           ))}
         </Col>
-        {currentUser && <Col md={4}>
-        <div>
-          <h3>Filters</h3>
-        </div>
+        <Col md={4}>
+          <Form
+            onSubmit={(event) => event.preventDefault()}
+          >
+            <Form.Control
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              type="text"
+              placeholder="search posts"
+            />
+          </Form>
           <div>
-            <SavedRestaurants currentUser={currentUser}/>
+            <h3>Filters</h3>
           </div>
-        </Col>}
+          {currentUser && <div>
+            <SavedRestaurants currentUser={currentUser} />
+          </div>}
+        </Col>
       </Row>
     </>
   )
