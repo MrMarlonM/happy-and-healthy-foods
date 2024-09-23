@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { Link, useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import { axiosRes } from '../../api/axiosDefaults';
+import { axiosRes, axiosReq } from '../../api/axiosDefaults';
 
 const Restaurant = (props) => {
     const location = useLocation();
@@ -23,10 +23,10 @@ const Restaurant = (props) => {
         like_id,
         like_count,
         review_count,
-      } = props;
+    } = props;
 
     const is_creator = created_by === currentUser?.username;
-    
+
     const handleEdit = () => {
         history.push(`/restaurants/${id}/edit`)
     }
@@ -35,14 +35,28 @@ const Restaurant = (props) => {
         try {
             await axiosRes.delete(`/restaurants/${id}`)
             history.push('/myrestaurants');
-        } catch(err){
+        } catch (err) {
 
+        }
+    }
+
+    const handleSaveRestaurant = async () => {
+        try {
+            const response = await axiosReq.get(`/profiles/`)
+            const profileList = response.data.results
+            const profile = profileList.filter(profile => profile.owner === currentUser.username);
+            const profileId = (profile[0].id);
+            console.log(profileId);
+            await axiosRes.put(`/profiles/${profileId}/favorites/`, { restaurant_id: id });
+        } catch (err) {
+            console.log(err)
         }
     }
 
     return (
         <>
             <Card>
+                {currentUser && <Button onClick={handleSaveRestaurant}>Save as favorite</Button>}
                 <Card.Img variant="top" src={image} height="250px" />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
