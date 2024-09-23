@@ -74,6 +74,7 @@ const Restaurant = (props) => {
                     {isRestaurantListPage && <Link to={`/restaurants/${id}`}>
                         <Button variant='link' block>Click here for more infos...</Button>
                     </Link>}
+                    <Card.Text className='text-muted text-center'>Last updated at: {updated_at}</Card.Text>
                 </Card.Body>
                 {is_creator && <Card.Body className={styles.ItemsCenter}>
                     <Button className={styles.Button} variant='info' onClick={handleEdit}>Edit restaurant</Button>
