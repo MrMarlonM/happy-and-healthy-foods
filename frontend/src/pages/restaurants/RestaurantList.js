@@ -5,12 +5,14 @@ import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import SavedRestaurants from '../../components/SavedRestaurants';
+import Asset from "../../components/Asset";
 
 const RestaurantList = ({ filter = "" }) => {
   const [restaurants, setRestaurants] = useState({ results: [] });
   const { pathname } = useLocation();
   const [query, setQuery] = useState("");
   const currentUser = useCurrentUser();
+  const [hasLoaded, setHasLoaded] = useState(false);
 
 
   useEffect(() => {
@@ -26,22 +28,30 @@ const RestaurantList = ({ filter = "" }) => {
         }
         const { data } = await axiosReq.get(`/restaurants/?${params.toString()}`);
         setRestaurants(data);
+        setHasLoaded(true);
       } catch (err) {
         console.log(err);
       }
     };
-    fetchRestaurants();
-  }, [filter, pathname, query])
+    setHasLoaded(false);
+    const timer = setTimeout(() => {
+      fetchRestaurants();
+    }, 500)
+    return () => {
+      clearTimeout(timer);
+    }
+  }, [filter, pathname, query, currentUser])
 
   return (
     <>
       {pathname === "/" ? <h2>Restaurants</h2> : <h2>My Restaurants</h2>}
-      {}
-      <Row>
+      <Row> 
         <Col md={8}>
-          {restaurants?.results.map(restaurant => (
+        {hasLoaded ?
+          (restaurants?.results.map(restaurant => (
             <Restaurant key={restaurant.id} {...restaurant} />
-          ))}
+          ))) : <Asset message="loading..."/>
+          }
         </Col>
         <Col md={4}>
           <Form
