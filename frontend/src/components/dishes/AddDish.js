@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, Image } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import styles from '../../styles/RestaurantForm.module.css';
@@ -48,7 +48,7 @@ const AddDish = (props) => {
         formDataDish.append('dietary_preference', dietary_preference)
 
         try {
-            const {data} = await axiosReq.post('/dishes/', formDataDish);
+            const { data } = await axiosReq.post('/dishes/', formDataDish);
             setDishes((prevDishes) => ({
                 ...prevDishes,
                 results: [data, ...prevDishes.results],
@@ -111,17 +111,25 @@ const AddDish = (props) => {
             {errors.price?.map((message, idx) =>
                 <Alert variant="warning" key={idx}>{message}</Alert>
             )}
-            <Form.File
-                id="image-upload-dish"
-                label="Click here to upload an image of the restaurant"
-                accept='image/*'
-                onChange={handleChangeImage}
-                ref={imageInput}
-            />
             <Form.Group>
-                {errors.image?.map((message, idx) =>
-                    <Alert variant="warning" key={idx}>{message}</Alert>
-                )}
+                {image ?
+                    <>
+                        <figure>
+                            <Image className={styles.Image} src={image} rounded />
+                        </figure>
+                    </> :
+                    <p><strong>Upload an image first to see a preview...</strong></p>}
+                <Form.File
+                    id="image-upload"
+                    accept='image/*'
+                    onChange={handleChangeImage}
+                    ref={imageInput}
+                />
+            </Form.Group>
+            {errors.image?.map((message, idx) =>
+                <Alert variant="warning" key={idx}>{message}</Alert>
+            )}
+            <Form.Group>  
                 <Form.Label>dietary Preference</Form.Label>
                 <Form.Control
                     as="select"

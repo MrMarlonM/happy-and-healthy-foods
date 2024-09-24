@@ -24,7 +24,7 @@ class Dish(models.Model):
         decimal_places=2,
         validators=[MinValueValidator(Decimal('0'))]
     )
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='images/', blank=True)
     dietary_preference = models.CharField(
         max_length=25, choices=dietary_preferences_choices
     )

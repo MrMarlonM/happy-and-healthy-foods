@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, Image } from 'react-bootstrap';
 import { axiosReq, axiosRes } from '../../api/axiosDefaults';
 import styles from '../../styles/RestaurantForm.module.css';
 
@@ -65,7 +65,7 @@ const EditDish = (props) => {
         formDataDish.append('dietary_preference', dishData.dietary_preference)
 
         try {
-           const {data: updatedDish} = await axiosRes.put(`/dishes/${id}/`, formDataDish);
+            const { data: updatedDish } = await axiosRes.put(`/dishes/${id}/`, formDataDish);
             setDishes((prevDishes) => {
                 const updatedResults = prevDishes.results.map((dish) => {
                     if (dish.id === id) {
@@ -74,7 +74,7 @@ const EditDish = (props) => {
                         return dish;
                     }
                 });
-                return {...prevDishes, results: updatedResults};
+                return { ...prevDishes, results: updatedResults };
             })
             setShowEditDish(false)
         } catch (err) {
@@ -126,17 +126,25 @@ const EditDish = (props) => {
             {errors.price?.map((message, idx) =>
                 <Alert variant="warning" key={idx}>{message}</Alert>
             )}
-            <Form.File
-                id="image-upload-dish"
-                label="Click here to upload an image of the restaurant"
-                accept='image/*'
-                onChange={handleChangeImage}
-                ref={imageInput}
-            />
             <Form.Group>
-                {errors.image?.map((message, idx) =>
-                    <Alert variant="warning" key={idx}>{message}</Alert>
-                )}
+                {dishData.image ?
+                    <>
+                        <figure>
+                            <Image className={styles.Image} src={dishData.image} rounded />
+                        </figure>
+                    </> :
+                    <p><strong>Upload an image first to see a preview...</strong></p>}
+                <Form.File
+                    id="image-upload"
+                    accept='image/*'
+                    onChange={handleChangeImage}
+                    ref={imageInput}
+                />
+            </Form.Group>
+            {errors.image?.map((message, idx) =>
+                <Alert variant="warning" key={idx}>{message}</Alert>
+            )}
+            <Form.Group>
                 <Form.Label>dietary Preference</Form.Label>
                 <Form.Control
                     as="select"
