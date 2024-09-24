@@ -24,7 +24,7 @@ class Restaurant(models.Model):
     name = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     country = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='images/', blank=True)
     short_description = models.TextField(max_length=500)
     cuisine_type = models.CharField(
         max_length=25, choices=cuisine_type_choices

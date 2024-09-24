@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, Image } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosReq } from '../../api/axiosDefaults';
 import styles from '../../styles/RestaurantForm.module.css';
@@ -103,17 +103,32 @@ const RestaurantCreateForm = () => {
             {errors.country?.map((message, idx) =>
                 <Alert variant="warning" key={idx}>{message}</Alert>
             )}
-            <Form.File
-                id="image-upload"
-                label="Click here to upload an image of the restaurant"
-                accept='image/*'
-                onChange={handleChangeImage}
-                ref={imageInput}
-            />
             <Form.Group>
-                {errors.image?.map((message, idx) =>
-                    <Alert variant="warning" key={idx}>{message}</Alert>
-                )}
+                {restaurantData.image ?
+                    <>
+                        <figure>
+                            <Image className={styles.Image} src={restaurantData.image} rounded />
+                        </figure>
+                        <div>
+                            <Form.Label htmlFor='image-upload' className={`btn`}>
+                                Change the image
+                            </Form.Label>
+                        </div>
+                    </> :
+                    <Form.Label htmlFor='image-upload' className={`btn`}>
+                        Upload new image
+                    </Form.Label>}
+                <Form.File
+                    id="image-upload"
+                    accept='image/*'
+                    onChange={handleChangeImage}
+                    ref={imageInput}
+                />
+            </Form.Group>
+            {errors.image?.map((message, idx) =>
+                <Alert variant="warning" key={idx}>{message}</Alert>
+            )}
+            <Form.Group>
                 <Form.Label>Short description</Form.Label>
                 <Form.Control
                     as="textarea"
