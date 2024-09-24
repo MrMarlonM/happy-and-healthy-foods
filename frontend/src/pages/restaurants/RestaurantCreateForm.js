@@ -3,8 +3,10 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosReq } from '../../api/axiosDefaults';
 import styles from '../../styles/RestaurantForm.module.css';
+import { useRedirect } from '../../hooks/useRedirect';
 
 const RestaurantCreateForm = () => {
+    useRedirect('loggedOut');
     const [errors, setErrors] = useState({});
 
     const [restaurantData, setRestaurantData] = useState({

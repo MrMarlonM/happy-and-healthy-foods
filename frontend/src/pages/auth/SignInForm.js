@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
@@ -8,10 +7,12 @@ import { useHistory } from 'react-router-dom';
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import styles from '../../styles/RestaurantForm.module.css';
 import { setTokenTimestamp } from "../../utils/utils";
+import { useRedirect } from "../../hooks/useRedirect";
 
 
 const SignInForm = () => {
     const setCurrentUser = useSetCurrentUser();
+    useRedirect('loggedIn');
 
     const [signInData, setSignInData] = useState({
         username: "",
