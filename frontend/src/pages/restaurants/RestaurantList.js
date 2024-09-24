@@ -6,6 +6,8 @@ import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import SavedRestaurants from '../../components/SavedRestaurants';
 import Asset from "../../components/Asset";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from '../../utils/utils';
 
 const RestaurantList = ({ filter = "" }) => {
   const [restaurants, setRestaurants] = useState({ results: [] });
@@ -44,13 +46,23 @@ const RestaurantList = ({ filter = "" }) => {
 
   return (
     <>
-      {pathname === "/" ? <h2>Restaurants</h2> : <h2>My Restaurants</h2>}
       <Row> 
         <Col md={8}>
+        {pathname === "/" ? 
+          <h2 className='text-center'>All Restaurants</h2>
+          : 
+          <h2 className='text-center'>My Restaurants</h2>}
         {hasLoaded ?
-          (restaurants?.results.map(restaurant => (
-            <Restaurant key={restaurant.id} {...restaurant} />
-          ))) : <Asset message="loading..."/>
+          <InfiniteScroll
+            children={restaurants?.results.map(restaurant => (
+              <Restaurant key={restaurant.id} {...restaurant} />
+            ))}
+            dataLength={restaurants?.results.length}
+            loader={<Asset/>}
+            hasMore={!!restaurants.next}
+            next={() => fetchMoreData(restaurants, setRestaurants)}
+          />
+           : <Asset message="loading..."/>
           }
         </Col>
         <Col md={4}>
