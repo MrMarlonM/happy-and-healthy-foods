@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import { useHistory } from 'react-router-dom';
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import styles from '../../styles/RestaurantForm.module.css';
+import { setTokenTimestamp } from "../../utils/utils";
 
 
 const SignInForm = () => {
@@ -27,6 +28,7 @@ const SignInForm = () => {
         try {
             const { data } = await axios.post('dj-rest-auth/login/', signInData);
             setCurrentUser(data.user);
+            setTokenTimestamp(data);
             history.push('/');
         } catch (err) {
             setErrors(err.response?.data)
