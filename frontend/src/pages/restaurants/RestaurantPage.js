@@ -8,6 +8,7 @@ import Restaurant from './Restaurant';
 import AddReview from '../../components/reviews/AddReview';
 import Review from '../../components/reviews/Review';
 import Dish from '../../components/dishes/Dish';
+import Asset from "../../components/Asset";
 
 const RestaurantPage = () => {
   const { id } = useParams();
@@ -15,6 +16,7 @@ const RestaurantPage = () => {
   const [dishes, setDishes] = useState({ results: [] });
   const [reviews, setReviews] = useState({ results: [] });
   const { created_by } = { ...restaurant.results[0] };
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   useEffect(() => {
     const handleMount = async () => {
@@ -31,11 +33,18 @@ const RestaurantPage = () => {
         setRestaurant({ results: [restaurant] });
         setDishes(dishes);
         setReviews(reviews);
+        setHasLoaded(true);
       } catch (err) {
         console.log(err);
       }
     };
-    handleMount();
+    setHasLoaded(false);
+    const timer = setTimeout(() => {
+      handleMount();
+    }, 500)
+    return () => {
+      clearTimeout(timer);
+    }
   }, [id]);
 
   const currentUser = useCurrentUser();
@@ -43,25 +52,29 @@ const RestaurantPage = () => {
 
   return (
     <>
-      <Restaurant {...restaurant.results[0]} />
-      <Row>
-        <Col>
-          {is_creator ? <AddDish setDishes={setDishes} /> : <h2>Dishes</h2>}
-          {dishes.results.length ? (
-            dishes.results.map(dish => (
-              <Dish key={dish.id} {...dish} is_creator={is_creator} setDishes={setDishes} dishes={dishes}/>
-            ))
-          ) : "No dishes added yet..."}
-        </Col>
-        <Col>
-          {currentUser ? <AddReview setReviews={setReviews} /> : "Reviews"}
-          {reviews.results.length ? (
-            reviews.results.map(review => (
-              <Review key={review.id} {...review} setReviews={setReviews}/>
-            ))
-          ) : "No reviews yet, be the first to write one!"}
-        </Col>
-      </Row>
+      {hasLoaded ?
+      <>
+        <Restaurant {...restaurant.results[0]} />
+        <Row>
+          <Col>
+            {is_creator ? <AddDish setDishes={setDishes} /> : <h2>Dishes</h2>}
+            {dishes.results.length ? (
+              dishes.results.map(dish => (
+                <Dish key={dish.id} {...dish} is_creator={is_creator} setDishes={setDishes} dishes={dishes} />
+              ))
+            ) : "No dishes added yet..."}
+          </Col>
+          <Col>
+            {currentUser ? <AddReview setReviews={setReviews} /> : "Reviews"}
+            {reviews.results.length ? (
+              reviews.results.map(review => (
+                <Review key={review.id} {...review} setReviews={setReviews} />
+              ))
+            ) : "No reviews yet, be the first to write one!"}
+          </Col>
+        </Row>
+      </>
+      : <Asset message="fetching the restaurant data..."/>}
     </>
   )
 }
