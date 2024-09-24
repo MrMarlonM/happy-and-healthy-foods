@@ -144,13 +144,8 @@ const RestaurantEdit = () => {
                                 <figure>
                                     <Image className={styles.Image} src={restaurantData.image} rounded />
                                 </figure>
-                                <Form.Label htmlFor='image-upload' className={`btn`}>
-                                    Change the image
-                                </Form.Label>
                             </> :
-                            <Form.Label htmlFor='image-upload' className={`btn`}>
-                                Upload new image
-                            </Form.Label>}
+                            <p><strong>Upload an image first to see a preview...</strong></p>}
                         <Form.File
                             id="image-upload"
                             accept='image/*'
