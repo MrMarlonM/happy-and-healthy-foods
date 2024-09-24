@@ -17,6 +17,6 @@ psycopg2==2.9.9
 PyJWT==2.9.0
 python3-openid==3.2.0
 requests-oauthlib==2.0.0
-setuptools==68.0.0
+setuptools==75.1.0
 sqlparse==0.5.1
 whitenoise==6.4.0
