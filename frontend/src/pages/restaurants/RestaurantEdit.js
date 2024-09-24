@@ -3,10 +3,12 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import { axiosReq, axiosRes } from '../../api/axiosDefaults';
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import styles from '../../styles/RestaurantForm.module.css';
+import Asset from "../../components/Asset";
 
 const RestaurantEdit = () => {
     const [errors, setErrors] = useState({});
     const { id } = useParams();
+    const [hasLoaded, setHasLoaded] = useState(false);
     const [restaurantData, setRestaurantData] = useState({
         name: "",
         city: "",
@@ -30,11 +32,18 @@ const RestaurantEdit = () => {
                     short_description: short_description,
                     cuisine_type: cuisine_type,
                 })
+                setHasLoaded(true);
             } catch (err) {
 
             }
         }
-        handleMount();
+        setHasLoaded(false);
+        const timer = setTimeout(() => {
+            handleMount();
+        }, 500)
+        return () => {
+            clearTimeout(timer);
+        }
     }, [history, id])
 
     const imageInput = useRef(null);
@@ -79,6 +88,8 @@ const RestaurantEdit = () => {
     }
 
     return (
+        <>
+        {hasLoaded ?
         <Form className={styles.Form} onSubmit={handleSubmit}>
             <h2 className='text-center'>Edit Restaurant</h2>
             <Form.Group>
@@ -184,6 +195,8 @@ const RestaurantEdit = () => {
                 <Alert className='mt-3' variant="warning" key={idx}>{message}</Alert>
             )}
         </Form>
+        : <Asset message="Loading restaurant data into form ..."/>}
+        </>
     )
 }
 
