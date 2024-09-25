@@ -1,13 +1,13 @@
 from django.test import TestCase
+from django.contrib.auth.models import User
+from django.core.files.uploadedfile import SimpleUploadedFile
 from rest_framework.test import APIClient
 from rest_framework import status
 from .models import Dish
 from restaurants.models import Restaurant
-from django.contrib.auth.models import User
 from PIL import Image
 from decimal import Decimal
 from io import BytesIO
-from django.core.files.uploadedfile import SimpleUploadedFile
 
 
 class DishListTestCase(TestCase):

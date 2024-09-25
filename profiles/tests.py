@@ -1,9 +1,10 @@
 from django.test import TestCase
+from django.contrib.auth.models import User
 from rest_framework.test import APIClient
 from rest_framework import status
 from .models import Profile
 from restaurants.models import Restaurant
-from django.contrib.auth.models import User
+
 
 class ProfileDetailTestCase(TestCase):
     def setUp(self):

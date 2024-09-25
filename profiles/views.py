@@ -1,8 +1,8 @@
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
+from drf_api.permissions import IsOwnerOrReadOnly
 from .models import Profile
 from .serializers import ProfileSerializer
-from drf_api.permissions import IsOwnerOrReadOnly
 from restaurants.models import Restaurant
 
 

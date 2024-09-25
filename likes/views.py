@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
+from drf_api.permissions import IsOwnerOrReadOnly
 from .models import Like
 from .serializers import LikeSerializer
-from drf_api.permissions import IsOwnerOrReadOnly
 
 
 class LikeList(generics.ListCreateAPIView):
