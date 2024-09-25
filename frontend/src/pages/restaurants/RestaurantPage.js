@@ -37,7 +37,7 @@ const RestaurantPage = () => {
         setReviews(reviews);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+
       }
     };
     setHasLoaded(false);

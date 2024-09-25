@@ -88,7 +88,7 @@ const RestaurantList = () => {
         setRestaurants(data);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+
       }
     };
     const timer = setTimeout(() => {

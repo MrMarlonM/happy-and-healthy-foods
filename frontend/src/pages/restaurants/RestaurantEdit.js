@@ -83,11 +83,9 @@ const RestaurantEdit = () => {
         }
 
         try {
-            console.log(formData)
             await axiosReq.put(`/restaurants/${id}/`, formData);
             history.push(`/restaurants/${id}`)
         } catch (err) {
-            console.log(err);
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data);
             }

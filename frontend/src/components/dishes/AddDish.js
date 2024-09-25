@@ -61,7 +61,6 @@ const AddDish = (props) => {
                 dietary_preference: "vegetarian",
             });
         } catch (err) {
-            console.log(err);
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data);
             }

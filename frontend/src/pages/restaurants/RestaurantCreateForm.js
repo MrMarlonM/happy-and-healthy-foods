@@ -54,7 +54,6 @@ const RestaurantCreateForm = () => {
             const { data } = await axiosReq.post('/restaurants/', formData);
             history.push(`/restaurants/${data.id}`)
         } catch (err) {
-            console.log(err);
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data);
             }
