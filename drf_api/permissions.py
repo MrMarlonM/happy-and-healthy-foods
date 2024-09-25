@@ -7,12 +7,13 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
     - Read-only access to any user.
     - Full access (create, update, delete) only to the owner of the object.
 
-    Ownership is determined by checking for either an 'owner' or 'created_by' attribute on the object.
+    Ownership is determined by checking for either an 'owner' or 'created_by'
+    attribute on the object.
     """
     def has_object_permission(self, request, view, obj):
         if request.method in permissions.SAFE_METHODS:
             return True
-        
+
         has_owner = hasattr(obj, 'owner')
         has_created_by = hasattr(obj, 'created_by')
 
@@ -22,4 +23,3 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
             return True
         else:
             return False
-

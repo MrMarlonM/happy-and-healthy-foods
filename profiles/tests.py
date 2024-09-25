@@ -8,7 +8,9 @@ from restaurants.models import Restaurant
 
 class ProfileDetailTestCase(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword'
+        )
         self.profile, created = Profile.objects.get_or_create(owner=self.user)
 
         self.restaurant = Restaurant.objects.create(
@@ -31,7 +33,9 @@ class ProfileDetailTestCase(TestCase):
         response = self.client.put(self.url, data, format='json')
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['message'], 'Restaurant added to favorites')
+        self.assertEqual(
+            response.data['message'], 'Restaurant added to favorites'
+        )
         self.assertIn(self.restaurant, self.profile.favorites.all())
 
     def test_remove_favorite(self):

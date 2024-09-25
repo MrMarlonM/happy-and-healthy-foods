@@ -18,8 +18,9 @@ class ProfileList(generics.ListAPIView):
 
 class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
     """
-    API endpoint for retrieving, updating, and deleting a specific user profile.
-    """ 
+    API endpoint for retrieving, updating, and deleting a
+    specific user profile.
+    """
     serializer_class = ProfileSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Profile.objects.all()
@@ -33,7 +34,8 @@ class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
         Adds the specified restaurant to the user's favorites if it exists.
 
         Returns:
-        - 200 OK with a success message if the restaurant is added successfully.
+        - 200 OK with a success message if the restaurant is
+          added successfully.
         - 400 Bad Request if 'restaurant_id' is missing.
         - 404 Not Found if the restaurant with the given ID doesn't exist.
         """
@@ -45,15 +47,15 @@ class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
                 {'error': 'Restaurant ID is required'},
                 status=status.HTTP_400_BAD_REQUEST
                 )
-        
+
         try:
             restaurant = Restaurant.objects.get(id=restaurant_id)
         except Restaurant.DoesNotExist:
             return Response(
-                {'error': 'Restaurant does not exist'}, 
+                {'error': 'Restaurant does not exist'},
                 status=status.HTTP_404_NOT_FOUND
                 )
-        
+
         profile.favorites.add(restaurant)
         return Response(
             {'message': 'Restaurant added to favorites'},
@@ -66,7 +68,8 @@ class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
 
         Expects 'restaurant_id' in the request data.
 
-        Removes the specified restaurant from the user's favorites if it exists.
+        Removes the specified restaurant from the user's favorites
+        if it exists.
 
         Returns:
         - 204 No Content if the restaurant is removed successfully.
@@ -81,7 +84,7 @@ class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
                 {'error': 'Restaurant ID is required'},
                 status=status.HTTP_400_BAD_REQUEST
                 )
-        
+
         try:
             restaurant = Restaurant.objects.get(id=restaurant_id)
         except Restaurant.DoesNotExist:

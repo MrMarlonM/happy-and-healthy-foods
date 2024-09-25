@@ -8,10 +8,16 @@ class Restaurant(models.Model):
     a short description, image, and creation/update timestamps.
 
     Relationships:
-    - `created_by`: The user who created this restaurant (ForeignKey to User).
-    - `dishes`: Dishes served at this restaurant (reverse relationship from the Dish model).
-    - `likes`: Users who have liked/favorited this restaurant (reverse relationship from the Like model).
-    - `reviews`: Reviews associated with this restaurant (reverse relationship from the Review model).
+    - `created_by`: The user who created this restaurant
+                    (ForeignKey to User).
+    - `dishes`: Dishes served at this restaurant
+                (reverse relationship from the Dish model).
+
+    - `likes`: Users who have liked/favorited this restaurant
+               (reverse relationship from the Like model).
+
+    - `reviews`: Reviews associated with this restaurant
+                 (reverse relationship from the Review model).
     """
     cuisine_type_choices = [
         ('italian', 'Italian'),
@@ -28,7 +34,7 @@ class Restaurant(models.Model):
         ('korean', 'Korean'),
         ('other', 'Other'),
     ]
-    
+
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
@@ -43,6 +49,6 @@ class Restaurant(models.Model):
 
     class Meta:
         ordering = ['-created_at']
-    
+
     def __str__(self):
         return f"{self.id} {self.name}"

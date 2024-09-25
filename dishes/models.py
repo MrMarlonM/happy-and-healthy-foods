@@ -10,7 +10,8 @@ class Dish(models.Model):
     price, image, dietary preferences, and creation/update timestamps.
 
     Relationships:
-    - `restaurant`: The restaurant where the dish is served (ForeignKey to Restaurant).
+    - `restaurant`: The restaurant where the dish is served
+                    (ForeignKey to Restaurant).
     """
     dietary_preferences_choices = [
         ('vegetarian', 'Vegetarian'),
@@ -18,10 +19,10 @@ class Dish(models.Model):
         ('pescatarian', 'Pescatarian'),
         ('gluten-free', 'Gluten-free'),
         ('halal', 'Halal'),
-        ('kosher', 'Kosher'), 
+        ('kosher', 'Kosher'),
         ('other', 'Other'),
     ]
-    
+
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     short_description = models.TextField(max_length=500)
@@ -39,6 +40,6 @@ class Dish(models.Model):
 
     class Meta:
         ordering = ['-created_at']
-    
+
     def __str__(self):
         return f"{self.name}"

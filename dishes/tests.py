@@ -25,7 +25,7 @@ class DishListTestCase(TestCase):
             short_description='example',
             cuisine_type='italian',
             )
-        
+
         self.dish1 = Dish.objects.create(
             restaurant=self.restaurant,
             name='Dish 1',
@@ -53,8 +53,8 @@ class DishListTestCase(TestCase):
         self.assertEqual(len(response.data), 2)
 
     def test_create_dish(self):
-        self.client.force_authenticate(user=self.user) 
-        
+        self.client.force_authenticate(user=self.user)
+
         image = Image.new('RGB', (100, 100))
         image_io = BytesIO()
         image.save(image_io, format='JPEG')
@@ -68,12 +68,12 @@ class DishListTestCase(TestCase):
             'short_description': 'Delicious!',
             'price': '9.99',
             'restaurant': self.restaurant.id,
-            'created_by': self.user.id, 
+            'created_by': self.user.id,
             'image': uploaded_image,
             'dietary_preference': 'vegetarian'
         }
 
-        response = self.client.post(self.url, data, format='multipart') 
+        response = self.client.post(self.url, data, format='multipart')
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Dish.objects.count(), 3)
@@ -81,7 +81,7 @@ class DishListTestCase(TestCase):
 
 class DishDetailTestCase(TestCase):
     def setUp(self):
-        
+
         self.user = User.objects.create_user(
             username='testuser',
             password='testpassword',
@@ -151,4 +151,4 @@ class DishDetailTestCase(TestCase):
         self.client.force_authenticate(user=self.user)
         response = self.client.delete(self.url)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-        self.assertEqual(Dish.objects.count(), 1) 
+        self.assertEqual(Dish.objects.count(), 1)

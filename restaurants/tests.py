@@ -10,7 +10,9 @@ from io import BytesIO
 
 class RestaurantListTestCase(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword'
+        )
         self.restaurant1 = Restaurant.objects.create(
             created_by=self.user,
             name='Italian Restaurant',
@@ -66,7 +68,9 @@ class RestaurantListTestCase(TestCase):
 
 class RestaurantDetailTestCase(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword'
+        )
         self.restaurant1 = Restaurant.objects.create(
             created_by=self.user,
             name='Italian Restaurant',

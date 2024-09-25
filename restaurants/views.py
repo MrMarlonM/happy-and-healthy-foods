@@ -10,16 +10,19 @@ class RestaurantList(generics.ListCreateAPIView):
     """
     API endpoint for listing and creating restaurants.
 
-    GET: Retrieve a list of restaurants. Supports filtering, searching, and ordering.
+    GET: Retrieve a list of restaurants.
+         Supports filtering, searching, and ordering.
 
         Filtering:
         - `cuisine_type`: Filter by cuisine type (e.g., 'italian', 'japanese').
-        - `dish__dietary_preference`: Filter by dietary preference of dishes served at the restaurant.
-        - `created_by__username`: Filter by the username of the user who created the restaurant.
+        - `dish__dietary_preference`: Filter by dietary preference of
+                                      dishes served at the restaurant.
+        - `created_by__username`: Filter by the username of the user who
+                                  created the restaurant.
 
         Searching:
-        - `search`: Search for restaurants by name, city, country, cuisine type,
-                    dish name, or dish dietary preference.
+        - `search`: Search for restaurants by name, city, country,
+                    cuisine type, dish name, or dish dietary preference.
 
         Ordering:
         - `ordering`: Order the results by one or more of the following fields:
@@ -28,7 +31,8 @@ class RestaurantList(generics.ListCreateAPIView):
                       Prefix with '-' for descending order.
 
     POST: Create a new restaurant.
-          Requires authentication, and the 'created_by' field is automatically set to the current user.
+          Requires authentication, and the 'created_by' field is automatically
+          set to the current user.
     """
     serializer_class = RestaurantSerializer
     permission_classes = [
@@ -75,12 +79,13 @@ class RestaurantDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     API endpoint for retrieving, updating, and deleting a specific restaurant.
 
-    GET: Retrieve the details of a single restaurant, including the like count and review count.
+    GET: Retrieve the details of a single restaurant, including the like count
+         and review count.
 
-    PUT/PATCH: Update the details of an existing restaurant. 
+    PUT/PATCH: Update the details of an existing restaurant.
                Requires authentication and ownership of the restaurant.
 
-    DELETE: Delete a restaurant. 
+    DELETE: Delete a restaurant.
             Requires authentication and ownership of the restaurant.
     """
     serializer_class = RestaurantSerializer

@@ -19,6 +19,6 @@ class Review(models.Model):
 
     class Meta:
         ordering = ['-created_at']
-    
+
     def __str__(self):
         return f"{self.restaurant} {self.created_by}"

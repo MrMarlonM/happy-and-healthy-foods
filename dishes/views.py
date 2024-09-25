@@ -9,14 +9,15 @@ class DishList(generics.ListCreateAPIView):
     """
     API endpoint for listing and creating dishes.
 
-    GET: Retrieve a list of dishes, optionally filtered by dietary preference or restaurant,
-         searched by name or description, and ordered by specified fields.
+    GET: Retrieve a list of dishes, optionally filtered by dietary preference
+         or restaurant, searched by name or description, and ordered by
+         specified fields.
 
     POST: Create a new dish. Requires authentication.
     """
     serializer_class = DishSerializer
     queryset = Dish.objects.all()
-    
+
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
@@ -48,7 +49,8 @@ class DishDetail(generics.RetrieveUpdateDestroyAPIView):
 
     GET: Retrieve the details of a single dish.
 
-    PUT/PATCH: Update the details of an existing dish. Requires authentication and ownership.
+    PUT/PATCH: Update the details of an existing dish. Requires authentication
+               and ownership.
 
     DELETE: Delete a dish. Requires authentication and ownership.
     """

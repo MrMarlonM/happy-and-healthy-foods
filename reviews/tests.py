@@ -21,13 +21,13 @@ class ReviewListTestCase(TestCase):
             cuisine_type='italian',
             )
         self.review1 = Review.objects.create(
-            restaurant=self.restaurant, 
-            created_by=self.user, 
+            restaurant=self.restaurant,
+            created_by=self.user,
             content='Great food!',
         )
         self.review2 = Review.objects.create(
-            restaurant=self.restaurant, 
-            created_by=self.user, 
+            restaurant=self.restaurant,
+            created_by=self.user,
             content='Amazing service!',
         )
 
@@ -56,7 +56,7 @@ class ReviewListTestCase(TestCase):
             'content': 'Decent experience.',
         }
         response = self.client.post(self.url, data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN) 
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
 
 class ReviewDetailTestCase(TestCase):
@@ -74,13 +74,13 @@ class ReviewDetailTestCase(TestCase):
             cuisine_type='italian',
             )
         self.review1 = Review.objects.create(
-            restaurant=self.restaurant, 
-            created_by=self.user, 
+            restaurant=self.restaurant,
+            created_by=self.user,
             content='Great food!',
         )
         self.review2 = Review.objects.create(
-            restaurant=self.restaurant, 
-            created_by=self.user, 
+            restaurant=self.restaurant,
+            created_by=self.user,
             content='Amazing service!',
         )
 
@@ -105,7 +105,7 @@ class ReviewDetailTestCase(TestCase):
         other_user = User.objects.create_user(
             username='otheruser', password='otherpassword'
             )
-        self.client.force_authenticate(user=other_user) 
+        self.client.force_authenticate(user=other_user)
         data = {'content': 'Updated review.'}
         response = self.client.put(self.url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
