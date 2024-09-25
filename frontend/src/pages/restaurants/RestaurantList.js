@@ -4,7 +4,6 @@ import Restaurant from './Restaurant';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import SavedRestaurants from '../../components/SavedRestaurants';
 import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from '../../utils/utils';
@@ -123,7 +122,7 @@ const RestaurantList = () => {
         </Col>
         <Col className={styles.MarginTop} md={4}>
           <div className={styles.Form}>
-          <h3>Search & Filter</h3>
+            <h3>Search & Filter</h3>
             <Form
               onSubmit={(event) => event.preventDefault()}
             >
@@ -163,9 +162,6 @@ const RestaurantList = () => {
               <Button variant='primary' onClick={() => resetFilters()}>Reset Filters</Button>
             </Form>
           </div>
-          {currentUser && <div>
-            <SavedRestaurants currentUser={currentUser} />
-          </div>}
         </Col>
       </Row>
     </>

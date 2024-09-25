@@ -3,7 +3,7 @@ import styles from "../../styles/Restaurant.module.css"
 import { Button, Card, ListGroup, ListGroupItem, Modal } from 'react-bootstrap';
 import { Link, useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import { axiosRes, axiosReq } from '../../api/axiosDefaults';
+import { axiosRes } from '../../api/axiosDefaults';
 
 const Restaurant = (props) => {
     const location = useLocation();
@@ -45,23 +45,9 @@ const Restaurant = (props) => {
         }
     }
 
-    const handleSaveRestaurant = async () => {
-        try {
-            const response = await axiosReq.get(`/profiles/`)
-            const profileList = response.data.results
-            const profile = profileList.filter(profile => profile.owner === currentUser.username);
-            const profileId = (profile[0].id);
-            console.log(profileId);
-            await axiosRes.put(`/profiles/${profileId}/favorites/`, { restaurant_id: id });
-        } catch (err) {
-            console.log(err)
-        }
-    }
-
     return (
         <>
             <Card className={styles.Restaurant}>
-                {currentUser && <Button variant='secondary' onClick={handleSaveRestaurant}>Save as favorite</Button>}
                 <Card.Img className={styles.Image} variant="top" src={image} />
                 <Card.Body>
                     <Card.Title><h3>{name}</h3></Card.Title>

@@ -6,6 +6,7 @@
 .Image {
     max-height: 30vh;
     object-fit:contain;
+    margin-top: 5px;
 }
 
 .Button {
