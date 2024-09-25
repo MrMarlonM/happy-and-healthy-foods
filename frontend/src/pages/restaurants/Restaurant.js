@@ -33,12 +33,12 @@ const Restaurant = (props) => {
     const handleClose = () => setShow(false);
 
     const handleEdit = () => {
-        history.push(`/restaurants/${id}/edit`)
+        history.push(`/restaurants/${id}/edit/`)
     }
 
     const handleDelete = async () => {
         try {
-            await axiosRes.delete(`/restaurants/${id}`)
+            await axiosRes.delete(`/restaurants/${id}/`)
             history.push('/myrestaurants');
         } catch (err) {
 
@@ -75,7 +75,7 @@ const Restaurant = (props) => {
                     <ListGroupItem>City: <br />{city}</ListGroupItem>
                 </ListGroup>
                 <Card.Body>
-                    {isRestaurantListPage && <Link to={`/restaurants/${id}`}>
+                    {isRestaurantListPage && <Link to={`/restaurants/${id}/`}>
                         <Button variant='link' block>Click here for more infos...</Button>
                     </Link>}
                     <Card.Text className='text-muted text-center'>Last updated at: {updated_at}</Card.Text>

@@ -25,7 +25,7 @@ const Dish = (props) => {
 
     const handleDelete = async () => {
         try {
-            await axiosRes.delete(`/dishes/${id}`)
+            await axiosRes.delete(`/dishes/${id}/`)
             setDishes((prevDishes) => ({
                 ...prevDishes,
                 results: prevDishes.results.filter((dish) => dish.id !== id),

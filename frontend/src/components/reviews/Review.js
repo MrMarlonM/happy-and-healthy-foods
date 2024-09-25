@@ -24,7 +24,7 @@ const Review = (props) => {
 
     const handleDelete = async () => {
         try {
-            await axiosRes.delete(`/reviews/${id}`);
+            await axiosRes.delete(`/reviews/${id}/`);
             setReviews((prevReviews) => ({
                 ...prevReviews,
                 results: prevReviews.results.filter((review) => review.id !== id),
