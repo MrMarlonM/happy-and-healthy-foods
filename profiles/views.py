@@ -7,16 +7,36 @@ from restaurants.models import Restaurant
 
 
 class ProfileList(generics.ListAPIView):
+    """
+    API endpoint for listing user profiles.
+
+    GET: Retrieve a list of all user profiles.
+    """
     serializer_class = ProfileSerializer
     queryset = Profile.objects.all()
 
 
 class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    API endpoint for retrieving, updating, and deleting a specific user profile.
+    """ 
     serializer_class = ProfileSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Profile.objects.all()
 
     def update(self, request, *args, **kwargs):
+        """
+        Handles PUT requests to update a user's favorite restaurants.
+
+        Expects 'restaurant_id' in the request data.
+
+        Adds the specified restaurant to the user's favorites if it exists.
+
+        Returns:
+        - 200 OK with a success message if the restaurant is added successfully.
+        - 400 Bad Request if 'restaurant_id' is missing.
+        - 404 Not Found if the restaurant with the given ID doesn't exist.
+        """
         profile = self.get_object()
         restaurant_id = request.data.get('restaurant_id')
 
@@ -41,6 +61,18 @@ class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
             )
 
     def delete(self, request, *args, **kwargs):
+        """
+        Handles DELETE requests to remove a restaurant from a user's favorites.
+
+        Expects 'restaurant_id' in the request data.
+
+        Removes the specified restaurant from the user's favorites if it exists.
+
+        Returns:
+        - 204 No Content if the restaurant is removed successfully.
+        - 400 Bad Request if 'restaurant_id' is missing.
+        - 404 Not Found if the restaurant with the given ID doesn't exist.
+        """
         profile = self.get_object()
         restaurant_id = request.data.get('restaurant_id')
 

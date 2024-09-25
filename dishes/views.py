@@ -6,6 +6,14 @@ from .serializers import DishSerializer, DishDetailSerializer
 
 
 class DishList(generics.ListCreateAPIView):
+    """
+    API endpoint for listing and creating dishes.
+
+    GET: Retrieve a list of dishes, optionally filtered by dietary preference or restaurant,
+         searched by name or description, and ordered by specified fields.
+
+    POST: Create a new dish. Requires authentication.
+    """
     serializer_class = DishSerializer
     queryset = Dish.objects.all()
     
@@ -35,5 +43,14 @@ class DishList(generics.ListCreateAPIView):
 
 
 class DishDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    API endpoint for retrieving, updating, and deleting a specific dish.
+
+    GET: Retrieve the details of a single dish.
+
+    PUT/PATCH: Update the details of an existing dish. Requires authentication and ownership.
+
+    DELETE: Delete a dish. Requires authentication and ownership.
+    """
     serializer_class = DishDetailSerializer
     queryset = Dish.objects.all()
