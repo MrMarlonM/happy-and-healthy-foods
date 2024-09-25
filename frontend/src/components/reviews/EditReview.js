@@ -58,11 +58,13 @@ const EditReview = (props) => {
             variant="primary"
             type="submit"
             disabled={!content.trim()}
+            className='mx-1'
         >
             Save changes
         </Button>
         <Button 
             variant="primary"
+            className='mx-1'
             onClick={() => setShowEditForm(false)}
         >
             Cancel

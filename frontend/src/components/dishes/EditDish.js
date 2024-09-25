@@ -5,6 +5,7 @@ import styles from '../../styles/RestaurantForm.module.css';
 
 const EditDish = (props) => {
     const { id, setShowEditDish, setDishes } = props;
+    const [imageChanged, setImageChanged] = useState(false);
 
     const [errors, setErrors] = useState({});
     const [dishData, setDishData] = useState({
@@ -18,7 +19,7 @@ const EditDish = (props) => {
     useEffect(() => {
         const handleMount = async () => {
             try {
-                const { data } = await axiosReq.get(`/dishes/${id}`)
+                const { data } = await axiosReq.get(`/dishes/${id}/`)
                 const { name, short_description, price, image, dietary_preference } = data;
                 setDishData({
                     name: name,
@@ -50,6 +51,7 @@ const EditDish = (props) => {
                 ...dishData,
                 image: URL.createObjectURL(event.target.files[0])
             });
+            setImageChanged(true);
         };
     };
 
@@ -61,8 +63,10 @@ const EditDish = (props) => {
         formDataDish.append('name', dishData.name)
         formDataDish.append('short_description', dishData.short_description)
         formDataDish.append('price', dishData.price)
-        formDataDish.append('image', imageInput.current.files[0])
         formDataDish.append('dietary_preference', dishData.dietary_preference)
+        if (imageChanged && imageInput?.current?.files[0]) {
+            formDataDish.append('image', imageInput.current.files[0])
+        }
 
         try {
             const { data: updatedDish } = await axiosRes.put(`/dishes/${id}/`, formDataDish);
@@ -168,10 +172,10 @@ const EditDish = (props) => {
                     <Alert variant="warning" key={idx}>{message}</Alert>
                 )}
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" className='mx-1' type="submit">
                 Save Changes
             </Button>
-            <Button variant="secondary" onClick={() => setShowEditDish(false)}>
+            <Button variant="secondary" className='mx-1' onClick={() => setShowEditDish(false)}>
                 Cancel
             </Button>
             {errors.non_field_errors?.map((message, idx) =>
