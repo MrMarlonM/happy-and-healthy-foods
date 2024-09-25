@@ -91,6 +91,7 @@ const EditDish = (props) => {
             <Form.Group>
                 <Form.Label>Name</Form.Label>
                 <Form.Control
+                    required
                     type="text"
                     name="name"
                     value={dishData.name}
@@ -103,6 +104,7 @@ const EditDish = (props) => {
             <Form.Group>
                 <Form.Label>Short description</Form.Label>
                 <Form.Control
+                    required
                     as="textarea"
                     rows={3}
                     name="short_description"
@@ -117,6 +119,8 @@ const EditDish = (props) => {
             <Form.Group>
                 <Form.Label>Price</Form.Label>
                 <Form.Control
+                    required
+                    min={0}
                     type="number"
                     name="price"
                     value={dishData.price}

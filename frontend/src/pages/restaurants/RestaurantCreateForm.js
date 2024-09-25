@@ -67,6 +67,7 @@ const RestaurantCreateForm = () => {
             <Form.Group>
                 <Form.Label>Name</Form.Label>
                 <Form.Control
+                    required
                     type="text"
                     name="name"
                     value={name}
@@ -80,6 +81,7 @@ const RestaurantCreateForm = () => {
             <Form.Group>
                 <Form.Label>City</Form.Label>
                 <Form.Control
+                    required
                     type="text"
                     name="city"
                     value={city}
@@ -93,6 +95,7 @@ const RestaurantCreateForm = () => {
             <Form.Group>
                 <Form.Label>Country</Form.Label>
                 <Form.Control
+                    required
                     type="text"
                     name="country"
                     value={country}
@@ -124,6 +127,7 @@ const RestaurantCreateForm = () => {
             <Form.Group>
                 <Form.Label>Short description</Form.Label>
                 <Form.Control
+                    required
                     as="textarea"
                     rows={3}
                     name="short_description"

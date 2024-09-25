@@ -47,6 +47,7 @@ const AddReview = (props) => {
         <Form.Group>
             <Form.Label>Content</Form.Label>
             <Form.Control
+                required
                 as="textarea"
                 rows={3}
                 name="content"

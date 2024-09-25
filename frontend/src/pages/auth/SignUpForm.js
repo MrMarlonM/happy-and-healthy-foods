@@ -41,6 +41,7 @@ const SignUpForm = () => {
                 <Form.Group controlId="username">
                     <Form.Label>Username</Form.Label>
                     <Form.Control 
+                        required
                         type="text"
                         placeholder="Enter your username"
                         name="username"
@@ -54,12 +55,14 @@ const SignUpForm = () => {
 
                 <Form.Group controlId="password1">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control 
+                    <Form.Control
+                        required
                         type="password"
                         placeholder="Enter your password"
                         name="password1"
                         value={password1}
                         onChange={handleChange}
+                        minLength={8}
                     />
                 </Form.Group>
                 {errors.password1?.map((message, idx) => 
@@ -68,12 +71,14 @@ const SignUpForm = () => {
                 
                 <Form.Group controlId="password2">
                     <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control 
+                    <Form.Control
+                        required
                         type="password" 
                         placeholder="Confirm your password"
                         name="password2"
                         value={password2}
                         onChange={handleChange}
+                        minLength={8}
                     />
                 </Form.Group>
                 {errors.password2?.map((message, idx) => 

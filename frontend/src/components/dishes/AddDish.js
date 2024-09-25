@@ -74,6 +74,7 @@ const AddDish = (props) => {
             <Form.Group>
                 <Form.Label>Name</Form.Label>
                 <Form.Control
+                    required
                     type="text"
                     name="name"
                     value={name}
@@ -87,6 +88,7 @@ const AddDish = (props) => {
             <Form.Group>
                 <Form.Label>Short description</Form.Label>
                 <Form.Control
+                    required
                     as="textarea"
                     rows={3}
                     name="short_description"
@@ -101,7 +103,9 @@ const AddDish = (props) => {
             <Form.Group>
                 <Form.Label>Price</Form.Label>
                 <Form.Control
+                    required
                     type="number"
+                    min={0}
                     name="price"
                     value={price}
                     onChange={handleChange}
