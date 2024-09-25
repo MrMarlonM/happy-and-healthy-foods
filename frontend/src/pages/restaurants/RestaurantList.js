@@ -8,6 +8,7 @@ import SavedRestaurants from '../../components/SavedRestaurants';
 import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from '../../utils/utils';
+import styles from '../../styles/RestaurantForm.module.css';
 
 const RestaurantList = () => {
   const [restaurants, setRestaurants] = useState({ results: [] });
@@ -44,6 +45,14 @@ const RestaurantList = () => {
     "kosher",
     "other",
   ]
+
+  const resetFilters = () => {
+    setFilters({
+      cuisine_type: [],
+      dish__dietary_preference: [],
+    });
+    setQuery("");
+  }
 
   const handleFilterChange = (filterName, value) => {
     setFilters((prevFilters) => {
@@ -112,22 +121,23 @@ const RestaurantList = () => {
             : <Asset message="loading..." />
           }
         </Col>
-        <Col md={4}>
-          <Form
-            onSubmit={(event) => event.preventDefault()}
-          >
-            <Form.Control
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              type="text"
-              placeholder="search posts"
-            />
-          </Form>
-          <div>
-            <h3>Filters</h3>
+        <Col className={styles.MarginTop} md={4}>
+          <div className={styles.Form}>
+          <h3>Search & Filter</h3>
+            <Form
+              onSubmit={(event) => event.preventDefault()}
+            >
+              <Form.Label className={styles.Bold}>Search</Form.Label>
+              <Form.Control
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                type="text"
+                placeholder="search posts"
+              />
+            </Form>
             <Form>
               <Form.Group>
-                <Form.Label>Cuisine Types</Form.Label>
+                <Form.Label className={styles.Bold}>Cuisine Types</Form.Label>
                 {cuisineTypes.map((cuisine) => (
                   <Form.Check
                     key={cuisine}
@@ -139,7 +149,7 @@ const RestaurantList = () => {
                 ))}
               </Form.Group>
               <Form.Group>
-                <Form.Label>Dietary Preferences</Form.Label>
+                <Form.Label className={styles.Bold}>Dietary Preferences</Form.Label>
                 {dietaryPreferences.map((preference) => (
                   <Form.Check
                     key={preference}
@@ -150,6 +160,7 @@ const RestaurantList = () => {
                   />
                 ))}
               </Form.Group>
+              <Button variant='primary' onClick={() => resetFilters()}>Reset Filters</Button>
             </Form>
           </div>
           {currentUser && <div>

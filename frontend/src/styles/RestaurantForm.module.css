@@ -19,3 +19,11 @@
 .Image {
     max-height: 20vh;
 }
+
+.Bold {
+    font-weight: bold;
+}
+
+.MarginTop {
+    margin-top: 40px;
+}
