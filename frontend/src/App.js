@@ -21,7 +21,7 @@ function App() {
       <Container className={styles.Main}>
         <Switch>
           <Route exact path='/' render={() => <RestaurantList/>} />
-          <Route exact path='/myrestaurants' render={() => <RestaurantList filter={`created_by__username=${username}`}/>} />
+          <Route exact path='/myrestaurants' render={() => <RestaurantList/>} />
           <Route exact path='/signin' render={() => <SignInForm />} />
           <Route exact path='/signup' render={() => <SignUpForm />} />
           <Route exact path ='/create' render={() => <RestaurantCreateForm/>} />
