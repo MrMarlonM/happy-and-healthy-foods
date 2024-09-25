@@ -3,7 +3,16 @@ from django.contrib.auth.models import User
 
 
 class Restaurant(models.Model):
-    
+    """
+    Represents a restaurant, storing its name, location, cuisine type,
+    a short description, image, and creation/update timestamps.
+
+    Relationships:
+    - `created_by`: The user who created this restaurant (ForeignKey to User).
+    - `dishes`: Dishes served at this restaurant (reverse relationship from the Dish model).
+    - `likes`: Users who have liked/favorited this restaurant (reverse relationship from the Like model).
+    - `reviews`: Reviews associated with this restaurant (reverse relationship from the Review model).
+    """
     cuisine_type_choices = [
         ('italian', 'Italian'),
         ('indian', 'Indian'),

@@ -5,7 +5,13 @@ from restaurants.models import Restaurant
 
 
 class Dish(models.Model):
-    
+    """
+    Represents a dish served at a restaurant, including its name, description,
+    price, image, dietary preferences, and creation/update timestamps.
+
+    Relationships:
+    - `restaurant`: The restaurant where the dish is served (ForeignKey to Restaurant).
+    """
     dietary_preferences_choices = [
         ('vegetarian', 'Vegetarian'),
         ('vegan', 'Vegan'),
@@ -36,7 +42,3 @@ class Dish(models.Model):
     
     def __str__(self):
         return f"{self.name}"
-
-
-class DietaryPreference(models.Model):
-    name = models.CharField(max_length=25, unique=True)
