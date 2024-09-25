@@ -29,8 +29,8 @@ const RestaurantPage = () => {
           { data: reviews },
         ] = await Promise.all([
           axiosReq.get(`/restaurants/${id}/`),
-          axiosReq.get(`/dishes/?restaurant=${id}/`),
-          axiosReq.get(`/reviews/?restaurant=${id}/`),
+          axiosReq.get(`/dishes/?restaurant=${id}`),
+          axiosReq.get(`/reviews/?restaurant=${id}`),
         ]);
         setRestaurant({ results: [restaurant] });
         setDishes(dishes);
