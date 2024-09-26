@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import { Button, Card, Modal } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Modal from 'react-bootstrap/Modal';
 import { axiosRes } from '../../api/axiosDefaults';
 import EditReview from './EditReview';
 
@@ -55,7 +57,7 @@ const Review = (props) => {
                                 {content}
                             </Card.Text>
                             {is_creator && !showEditForm && <div>
-                                <Button className='mx-1' onClick={() => setShowEditForm(true)}>Edit</Button>
+                                <Button variant='info' className='mx-1' onClick={() => setShowEditForm(true)}>Edit</Button>
                                 <Button variant='danger' className='mx-1' onClick={handleShow}>Delete</Button>
                             </div>}
                         </Card.Body>

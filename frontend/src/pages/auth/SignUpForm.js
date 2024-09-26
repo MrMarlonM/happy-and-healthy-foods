@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
-import { Form, Button, Alert} from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 import styles from '../../styles/RestaurantForm.module.css';
 import { useRedirect } from '../../hooks/useRedirect';
 

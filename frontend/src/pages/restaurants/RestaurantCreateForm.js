@@ -1,5 +1,8 @@
 import React, { useRef, useState } from 'react';
-import { Form, Button, Alert, Image } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
+import Image from 'react-bootstrap/Image';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosReq } from '../../api/axiosDefaults';
 import styles from '../../styles/RestaurantForm.module.css';

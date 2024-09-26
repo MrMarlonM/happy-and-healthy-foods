@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
-import { Button, Card, Modal } from 'react-bootstrap';
+import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Modal from 'react-bootstrap/Modal';
 import { axiosRes } from '../../api/axiosDefaults';
 import EditDish from './EditDish';
 import styles from "../../styles/Restaurant.module.css";
@@ -57,7 +59,7 @@ const Dish = (props) => {
                         </Card.Text>
                         <Card.Text className='text-muted'>Last updated at: {updated_at}</Card.Text>
                         {is_creator && <Button variant='danger' className='mx-1' onClick={handleShow}>Delete</Button>}
-                        {is_creator && <Button className='mx-1' onClick={() => setShowEditDish(true)}>Edit</Button>}
+                        {is_creator && <Button variant='info' className='mx-1' onClick={() => setShowEditDish(true)}>Edit</Button>}
                     </Card.Body>
                 </Card>
             )}

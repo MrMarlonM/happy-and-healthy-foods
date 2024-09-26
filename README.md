@@ -237,6 +237,11 @@ Represents a review written by a user about a restaurant.
 ## Unsolved Bugs
 No unresolved bugs remain at this time.
 
+## Deployment
+### Local Deployment
+
+### Deployment to Heroku
+
 ## References
 As a starting point for the development of this project the Moments walkthrough project provided by Code Institute was a great help.
 

@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import styles from "../../styles/Restaurant.module.css"
-import { Button, Card, ListGroup, ListGroupItem, Modal } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
+import ListGroupItem from 'react-bootstrap/ListGroupItem';
+import Modal from 'react-bootstrap/Modal';
 import { Link, useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { axiosRes } from '../../api/axiosDefaults';
@@ -22,9 +26,6 @@ const Restaurant = (props) => {
         short_description,
         cuisine_type,
         updated_at,
-        like_id,
-        like_count,
-        review_count,
     } = props;
 
     const is_creator = created_by === currentUser?.username;

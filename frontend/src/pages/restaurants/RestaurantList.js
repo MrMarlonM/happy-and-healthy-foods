@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { axiosReq } from '../../api/axiosDefaults';
 import Restaurant from './Restaurant';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
-import { Form, Row, Col, Button } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
