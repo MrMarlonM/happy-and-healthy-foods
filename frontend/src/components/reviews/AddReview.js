@@ -46,7 +46,7 @@ const AddReview = (props) => {
     <Form className={styles.Form} onSubmit={handleSubmit}>
         <h3>Add new Review</h3>
         <Form.Group>
-            <Form.Label>Content</Form.Label>
+            <Form.Label className='d-none'>Content</Form.Label>
             <Form.Control
                 required
                 as="textarea"

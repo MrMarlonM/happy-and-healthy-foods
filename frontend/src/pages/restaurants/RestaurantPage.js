@@ -72,7 +72,7 @@ const RestaurantPage = () => {
                   next={() => fetchMoreData(dishes, setDishes)}
                 />
 
-              ) : "No dishes added yet..."}
+              ) : "No dishes added yet by the creator..."}
             </Col>
             <Col>
               {currentUser ? <AddReview setReviews={setReviews} /> : <h2>Reviews</h2>}
@@ -86,7 +86,7 @@ const RestaurantPage = () => {
                 hasMore={!!reviews.next}
                 next={() => fetchMoreData(reviews, setReviews)}
               />
-              ) : "No reviews yet, be the first to write one!"}
+              ) : "No reviews added yet..."}
             </Col>
           </Row>
         </>
