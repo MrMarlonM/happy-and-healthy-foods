@@ -53,6 +53,7 @@ const Restaurant = (props) => {
                 <Card.Body>
                     <Card.Title><h3>{name}</h3></Card.Title>
                     <Card.Text className={styles.Italic}>
+                        Cuisine Type: <br/>
                         {cuisine_type}
                     </Card.Text>
                 </Card.Body>

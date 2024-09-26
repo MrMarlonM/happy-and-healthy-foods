@@ -116,7 +116,8 @@ const RestaurantList = () => {
             :
             <h2 className='text-center'>My Restaurants</h2>}
           {hasLoaded ?
-            <InfiniteScroll
+            (restaurants?.results.length ? 
+            (<InfiniteScroll
               children={restaurants?.results.map(restaurant => (
                 <Restaurant key={restaurant.id} {...restaurant} />
               ))}
@@ -124,7 +125,7 @@ const RestaurantList = () => {
               loader={<Asset />}
               hasMore={!!restaurants.next}
               next={() => fetchMoreData(restaurants, setRestaurants)}
-            />
+            />) : <p>You did not create any restaurants yet ...</p>)
             : <Asset message="loading..." />
           }
         </Col>
