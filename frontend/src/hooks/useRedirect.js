@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
+import { useHistory, useLocation } from "react-router-dom/cjs/react-router-dom.min"
 
 export const useRedirect = (userAuthStatus) => {
     const history = useHistory();
-
+    const {pathname} = useLocation();
+    
     useEffect(() => {
         const handleMount = async () => {
             try {
@@ -13,11 +14,11 @@ export const useRedirect = (userAuthStatus) => {
                     history.push('/');
                 }
             } catch(err) {
-                if (userAuthStatus === 'loggedOut') {
+                if (userAuthStatus === 'loggedOut' || pathname === '/myrestaurant') {
                     history.push('/');
                 }
             }
         };
         handleMount();
-    }, [history, userAuthStatus]);
+    }, [history, userAuthStatus, pathname]);
 }

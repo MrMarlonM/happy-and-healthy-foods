@@ -11,8 +11,10 @@ import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from '../../utils/utils';
 import styles from '../../styles/RestaurantForm.module.css';
+import { useRedirect } from '../../hooks/useRedirect';
 
 const RestaurantList = () => {
+  useRedirect('loggedOut');
   const [restaurants, setRestaurants] = useState({ results: [] });
   const { pathname } = useLocation();
   const [query, setQuery] = useState("");
@@ -67,6 +69,9 @@ const RestaurantList = () => {
   };
 
   useEffect(() => {
+    if (pathname === '/myrestaurants'){
+      
+    }
     setHasLoaded(false);
     const fetchRestaurants = async () => {
       try {
