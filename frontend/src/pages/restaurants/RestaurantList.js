@@ -105,7 +105,7 @@ const RestaurantList = () => {
   return (
     <>
       <Row>
-        <Col md={8}>
+        <Col md={8} className='order-2'>
           {pathname === "/" ?
             <h2 className='text-center'>All Restaurants</h2>
             :
@@ -123,7 +123,7 @@ const RestaurantList = () => {
             : <Asset message="loading..." />
           }
         </Col>
-        <Col className={styles.MarginTop} md={4}>
+        <Col className={`${styles.MarginTop}`} md={4}>
           <div className={styles.Form}>
             <h3>Search & Filter</h3>
             <Form

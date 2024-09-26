@@ -26,4 +26,11 @@
 
 .MarginTop {
     margin-top: 40px;
+    order: 3;
+}
+
+@media only screen and (max-width: 767px){
+    .MarginTop {
+        order: 1;
+    }
 }
