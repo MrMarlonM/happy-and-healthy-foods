@@ -48,7 +48,7 @@ const Restaurant = (props) => {
     return (
         <>
             <Card className={styles.Restaurant}>
-                <Card.Img className={styles.Image} variant="top" src={image} />
+                <Card.Img alt={name} className={styles.Image} variant="top" src={image} />
                 <Card.Body>
                     <Card.Title><h3>{name}</h3></Card.Title>
                     <Card.Text className={styles.Italic}>
