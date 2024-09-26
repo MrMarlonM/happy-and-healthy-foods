@@ -50,8 +50,10 @@ The following user stories where created to make sure the interests of the targe
 - [VS Code](https://code.visualstudio.com/): As Code Editor
 - [Gitpod](https://www.gitpod.io/): As Virtual Development Environment
 - [Pip3](https://pypi.org/project/pip/): As package manager for dependencies.
-- [PostgreSQL from Code Institute](https://dbs.ci-dbs.net/): As cloud database to store the data.
 - [Chrome Dev Tools](https://developer.chrome.com/docs/devtools/open/): For debugging the Website.
+
+### Database
+- [PostgreSQL from Code Institute](https://dbs.ci-dbs.net/): As cloud database to store the data.
 
 ### Python packages
 - asgiref==3.8.1
@@ -128,7 +130,7 @@ This Agile approach allowed for flexibility, frequent feedback, and iterative de
 The following entity relationship model was crafted for the project:  
 ![image of entity relationship model](documentation/entity-relationship-model.png)  
 
-### Dish Model
+### Dish Model (unique)
 Represents a dish served at a restaurant, including its name, description,
     price, image, dietary preferences, and creation/update timestamps.
 
@@ -153,7 +155,7 @@ Represents a user's profile, storing additional information and
     - `favorites`: Restaurants that the user has favorited
                    (ManyToManyField to Restaurant).
 
-### Restaurant Model
+### Restaurant Model (unique)
 Represents a restaurant, storing its name, location, cuisine type,
     a short description, image, and creation/update timestamps.
 
