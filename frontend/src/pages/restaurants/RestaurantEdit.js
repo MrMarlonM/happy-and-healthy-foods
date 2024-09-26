@@ -7,8 +7,10 @@ import { axiosReq, axiosRes } from '../../api/axiosDefaults';
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import styles from '../../styles/RestaurantForm.module.css';
 import Asset from "../../components/Asset";
+import { useRedirect } from '../../hooks/useRedirect';
 
 const RestaurantEdit = () => {
+    useRedirect('loggedOut');
     const [errors, setErrors] = useState({});
     const { id } = useParams();
     const [hasLoaded, setHasLoaded] = useState(false);
@@ -26,7 +28,7 @@ const RestaurantEdit = () => {
     useEffect(() => {
         const handleMount = async () => {
             try {
-                const { data } = await axiosRes.get(`/restaurants/${id}`)
+                const { data } = await axiosRes.get(`/restaurants/${id}/`)
                 const { name, city, country, image, short_description, cuisine_type, is_owner } = data;
 
                 is_owner ?
