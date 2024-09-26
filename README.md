@@ -1,131 +1,245 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Happy and Healthy Foods
+The restaurant comparison platform **Happy and Healthy Foods** sets out to offer a community-driven approach for comparing restaurants all over the world.  
 
-Welcome Marlon Martynkiewitz,
+## User Experience
+### The big picture
+The theme of the website is to offer every user the ability to add restaurants in an easy and fast way whilst also to be able to browse restaurants others added. Through added filter and search functionalities, users can find their respective city and preferred choice of food in a fast and easy manner. 
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+### Target Audience
+The website is catering towards people who are conscious their food choices and want the ability to predetermine if a given location fits their personal needs.
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
+### User Stories
+The following user stories where created to make sure the interests of the target audience are met:
 
-## Gitpod Reminders
+#### **Unregistered User**:
+[**User Story:**](https://github.com/MrMarlonM/happy-and-healthy-foods/issues/1) As a first-time visitor I can see an overview of all restaurants so that I can inform myself quickly  
+[**User Story:**](https://github.com/MrMarlonM/happy-and-healthy-foods/issues/6) As a first-time user I can register fast and easily so that I can use the advanced functionalities  
+[**User Story:**](https://github.com/MrMarlonM/happy-and-healthy-foods/issues/3) As a first-time visitor I can navigate the website easily and intuitively so that I have direct access to all the information provided.  
+[**User Story:**](https://github.com/MrMarlonM/happy-and-healthy-foods/issues/4) As a first-time visitor I can open restaurants in a more detailed view so that I can inform me in more detail about the provided options  
+[**User Story:**](https://github.com/MrMarlonM/happy-and-healthy-foods/issues/2) As a first-time visitor I can filter the restaurants so that I can search for my preferred regions or food choices  
+[**User Story:**](https://github.com/MrMarlonM/happy-and-healthy-foods/issues/14) As a first-time visitor I can filter the dishes of a restaurant so that I can see relevant information more easily  
+[**User Story:**](https://github.com/MrMarlonM/happy-and-healthy-foods/issues/5) As a first-time visitor I can see how others rated the restaurant so that I can make up my mind quickly  
+#### **Registered User**:
+[**User Story:**](https://github.com/MrMarlonM/happy-and-healthy-foods/issues/7) As a registered user I can share my reviews on restaurants so that others can benefit from my experiences  
+[**User Story:**](https://github.com/MrMarlonM/happy-and-healthy-foods/issues/9) As a registered user I can add new restaurants so that I can share my experiences and allow others to review the same restaurants  
+[**User Story:**](https://github.com/MrMarlonM/happy-and-healthy-foods/issues/13) As a registered user I can add ingredients to dishes so that other users have a clear idea what to food is made of  
+[**User Story:**](https://github.com/MrMarlonM/happy-and-healthy-foods/issues/12) As a registered user I can add new cuisine types so that I can customize the restaurants I add  
+[**User Story:**](https://github.com/MrMarlonM/happy-and-healthy-foods/issues/11) As a registered user I can change my password so that I can secure my account  
+[**User Story:**](https://github.com/MrMarlonM/happy-and-healthy-foods/issues/10) As a registered user I can save restaurants as a favorite so that I can access them quickly and easily.  
+[**User Story:**](https://github.com/MrMarlonM/happy-and-healthy-foods/issues/8) As a registered user I can like restaurants so that others can see my appreciation of a certain restaurant  
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## Technologies Used
+### Languages
+- [Python 3.12.2](https://www.python.org/downloads/release/python-3122/): As primary server-side language.
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript): For interactivity on the website.
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS): To style the website.
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML): The markup language for the website.
 
-`python3 -m http.server`
+### Frameworks and Libraries
+- [Django REST API:](https://www.django-rest-framework.org/) For creation of the Backend API
+- [React:](https://react.dev/) For creation of the Frontend Application
+- [React-Bootstrap:](https://react-bootstrap-v4.netlify.app/getting-started/introduction/) For styling and customization
 
-A blue button should appear to click: _Make Public_,
+### Tools and Helpers
+- [Pexels](https://www.pexels.com/): For free images.
+- [Balsamiq](https://balsamiq.com/): For creation of the Wireframes and Database Models
+- [Google Fonts](https://fonts.google.com/): For implementation of different fonts.
+- [Heroku](https://www.heroku.com/): To host the live version
+- [Github](https://github.com/): To host the code base
+- [Git](https://git-scm.com/): For version control
+- [VS Code](https://code.visualstudio.com/): As Code Editor
+- [Gitpod](https://www.gitpod.io/): As Virtual Development Environment
+- [Pip3](https://pypi.org/project/pip/): As package manager for dependencies.
+- [PostgreSQL from Code Institute](https://dbs.ci-dbs.net/): As cloud database to store the data.
+- [Chrome Dev Tools](https://developer.chrome.com/docs/devtools/open/): For debugging the Website.
 
-Another blue button should appear to click: _Open Browser_.
+### Python packages
+- asgiref==3.8.1
+- cloudinary==1.41.0
+- dj-database-url==0.5.0
+- dj-rest-auth==2.1.9
+- Django==4.2.16
+- django-allauth==0.53.0
+- django-cloudinary-storage==0.3.0
+- django-cors-headers==4.4.0
+- django-filter==24.3
+- django-rest-auth==0.9.5
+- djangorestframework==3.15.2
+- djangorestframework-simplejwt==5.3.1
+- gunicorn==23.0.0
+- oauthlib==3.2.2
+- pillow==10.4.0
+- psycopg2==2.9.9
+- PyJWT==2.9.0
+- python3-openid==3.2.0
+- requests-oauthlib==2.0.0
+- setuptools==75.1.0
+- sqlparse==0.5.1
+- whitenoise==6.4.0
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+## Features
+For an overview of the implemented features, please refer to the [FEATURES.md](/FEATURES.md).
 
-A blue button should appear to click: _Make Public_,
+## Future Development
+Given the time constraints of the first iteration, some features mentioned in the User Stories weren't implemented and will be left for the next iterations to come. But all features that where listed as must-have and should-have where added.
+Here is a short overview of the won't-have User Stories:
+- [**User Story:**](https://github.com/MrMarlonM/happy-and-healthy-foods/issues/14) As a first-time visitor I can filter the dishes of a restaurant so that I can see relevant information more easily  
+- [**User Story:**](https://github.com/MrMarlonM/happy-and-healthy-foods/issues/13) As a registered user I can add ingredients to dishes so that other users have a clear idea what to food is made of  
+- [**User Story:**](https://github.com/MrMarlonM/happy-and-healthy-foods/issues/12) As a registered user I can add new cuisine types so that I can customize the restaurants I add  
+- [**User Story:**](https://github.com/MrMarlonM/happy-and-healthy-foods/issues/11) As a registered user I can change my password so that I can secure my account  
+- [**User Story:**](https://github.com/MrMarlonM/happy-and-healthy-foods/issues/10) As a registered user I can save restaurants as a favorite so that I can access them quickly and easily.  
+- [**User Story:**](https://github.com/MrMarlonM/happy-and-healthy-foods/issues/8) As a registered user I can like restaurants so that others can see my appreciation of a certain restaurant  
+- [**User Story:**](https://github.com/MrMarlonM/happy-and-healthy-foods/issues/5) As a first-time visitor I can see how others rated the restaurant so that I can make up my mind quickly  
 
-Another blue button should appear to click: _Open Browser_.
+## Design
+The design goal of the website is to present the content in a clear and easy to navigate manner. For that everything is spaced out and all functionalities are directly visible, making it easy for the users to navigate the page very fast.
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+### Color Scheme
+To give the website a fresh and clean look, a light-green together with white was used for all colored parts. For the want a standard black was used to allow for maximal contrast and readability.
+![image of colors used](documentation/colors.png)
 
-To log into the Heroku toolbelt CLI:
+### Typography
+For the content the font DM-Sans was used and for the Navigation bar the noto-sans font, which is a bit more spacious and gives a bit contrast to the more narrow dm-sans font.  
+DM-sans:  
+![image dm-sans](documentation/dm-sans.png)  
+Noto Sans:    
+![image noto sans](documentation/noto-sans.png)
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### Wireframes
+For the Wireframes drawn for this project please refer to [this PDF](documentation/wireframes-website.pdf).
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+## Agile Methodology
+This project embraced Agile principles throughout its development, ensuring flexibility, adaptability, and a user-centric focus. Here's a breakdown of the Agile practices employed:
+- **User Stories and Acceptance Criteria:** User stories were used to capture functional requirements from the user's perspective. Each story included clear acceptance criteria to define the conditions for completion.
 
-### Connecting your Mongo database
+- **Task Breakdown:** User stories were further broken down into actionable tasks, providing a granular view of the work involved.
 
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
+- **Product Backlog Prioritization:** User stories were prioritized in the product backlog based on their importance and value to the project, ensuring that the most crucial features were addressed first.
 
-------
+- **Iteration Planning with MoSCoW:** Two iterations (sprints) were planned, with user stories selected based on priority and team capacity. The MoSCoW method (Must-have, Should-have, Could-have, Won't-have) was used to prioritize stories within each sprint.
 
-## Release History
+- **GitHub Projects Kanban Board:** A Kanban board was created in GitHub Projects to visualize and manage the workflow. Columns included "Bug," "To Do," "In Progress," "Done," and "Future Development," allowing for clear progress tracking.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+- **Continuous Refinement:** The backlog was continuously refined throughout the project, with user stories being added, modified, or re-prioritized based on feedback and evolving needs.
 
-**June 18, 2024,** Add Mongo back into template
+This Agile approach allowed for flexibility, frequent feedback, and iterative development, ensuring the final product delivered maximum value to users.
 
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
+## Entity Relationship Model
+The following entity relationship model was crafted for the project:  
+![image of entity relationship model](documentation/entity-relationship-model.png)  
 
-**May 28 2024:** Fix Mongo and Links installs
+### Dish Model
+Represents a dish served at a restaurant, including its name, description,
+    price, image, dietary preferences, and creation/update timestamps.
 
-**April 26 2024:** Update node version to 16
+    Relationships:
+    - `restaurant`: The restaurant where the dish is served
+                    (ForeignKey to Restaurant).
 
-**September 20 2023:** Update Python version to 3.9.17.
+### Like Model
+Represents a 'like' action by a user on a restaurant.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+    Relationships:
+    - `restaurant`: The restaurant that received the like
+                    (ForeignKey to Restaurant).
+    - `created_by`: The user who liked the restaurant (ForeignKey to User).
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+### Profile Model
+Represents a user's profile, storing additional information and
+    preferences.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+    Relationships:
+    - `owner`: The user associated with this profile (OneToOneField to User).
+    - `favorites`: Restaurants that the user has favorited
+                   (ManyToManyField to Restaurant).
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+### Restaurant Model
+Represents a restaurant, storing its name, location, cuisine type,
+    a short description, image, and creation/update timestamps.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+    Relationships:
+    - `created_by`: The user who created this restaurant
+                    (ForeignKey to User).
+    - `dishes`: Dishes served at this restaurant
+                (reverse relationship from the Dish model).
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+    - `likes`: Users who have liked/favorited this restaurant
+               (reverse relationship from the Like model).
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+    - `reviews`: Reviews associated with this restaurant
+                 (reverse relationship from the Review model).
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+### Review Model
+Represents a review written by a user about a restaurant.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+    Relationships:
+    - `restaurant`: The restaurant being reviewed (ForeignKey to Restaurant).
+    - `created_by`: The user who wrote the review (ForeignKey to User).
+  
+## Solved Bugs
+### Backend
+- *Bug 1:*  
+  •	Automated tests for adding and removing favorites in a Django REST API were failing.
+  •	The `add_favorite` test resulted in a `404 Not Found` error, indicating the `PUT` request wasn't reaching the intended view.
+  •	The `remove_favorite` test resulted in a `405 Method Not Allowed` error, suggesting the `DELETE` request wasn't being handled correctly.  
+  *Solution:*  
+  •	URL configuration: The URL pattern in `urls.py` was adjusted to include `/favorites/` at the end to explicitly define the favorites endpoint.  
+  •	View logic:  
+    o	The `ProfileDetail` view was enhanced to utilize `RetrieveUpdateDestroyAPIView`, inherently supporting `DELETE` requests.  
+    o	The `update` method was adjusted to exclusively handle `PUT` requests for adding favorites and return the expected `'message'` in the response.  
+    o	A separate `delete` method was introduced to handle `DELETE` requests for removing favorites.  
+  These changes ensured that the tests correctly targeted the favorites endpoint and the view handled both `PUT` and `DELETE` requests as intended, resulting in successful test execution.  
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+- *Bug 2:*  
+  •	A warning message `"min_value should be a Decimal instance"` was appearing during test execution due to an integer being used as the `min_value` for a DecimalField.  
+  *Solution:*  
+  •	The `MinValueValidator` in the Dish model's price field was updated to use `Decimal('0')`, ensuring type consistency and accurate handling of decimal values.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+- *Bug 3:*  
+  •	Automated tests for retrieving, updating, and deleting dishes were failing with `404 Not Found` errors, indicating that the dish resources were not being found.  
+  *Solution:*  
+  •	The URL pattern in `urls.py` for the `DishDetail` view was missing a trailing slash. Adding the trailing slash to the URL pattern `(/dishes/<int:pk>/)` resolved the issue, ensuring that the requests correctly matched the intended view and the dish resources were found successfully.
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+### Frontend
+- *Bug 1:*  
+  • After implementing user registration, login, and logout functionality, an unexpected login prompt appears upon page refresh after logging out. The issue persists despite not having any explicit code to trigger such alerts.
+  *Solution:*  
+  The root cause was the use of `BasicAuthentication` in the Django backend during development, which prompted for credentials when the frontend attempted to access the user endpoint. The solution involved:  
+    • Switching to `JWTCookieAuthentication`: Removing the DEV environment variable in the Django settings enabled `JWTCookieAuthentication`, which is more suitable for handling authentication in a React app.  
+    •	Adjusting `ALLOWED_HOSTS`: Adding `'127.0.0.1'` to the `ALLOWED_HOSTS` in Django settings resolved a `400 error` caused by the React app running on a different host.
+    •	Updating React Scripts: The initial React app setup used an older version of `react-scripts`, causing compatibility issues. Upgrading to the latest version resolved this.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+- *Bug 2:*  
+  •	When attempting to fetch restaurant details using `axiosReq.get('/restaurants/${id}')`, a `404 error` occurred, indicating the requested URL was not found. The actual URL being sent to the server was incorrect, appending the endpoint to the current page's URL instead of the API's base URL.  
+  *Solution:*  
+  •	The issue was caused by the missing leading slash in the API endpoint path. By changing the request to `axiosReq.get(/restaurants/${id}/')`, the request is correctly sent to the root of the API, resolving the `404 error` and allowing the restaurant details to be fetched successfully.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+- *Bug 3:*  
+  •	The `AddDish` component caused an infinite loop and endless loading because it was rendering itself recursively.  
+  *Solution:*  
+  •	The recursive rendering was eliminated by removing the line `<AddDish />` from within the AddDish component's JSX. This ensures that the component is only rendered once when called from a parent component, preventing the infinite loop.
 
-------
+- *Bug 4:*  
+  • The filtering functionality in the RestaurantList component was not working as expected on the `/myrestaurants` page. Even though the correct filter parameter `(created_by__username)` was being passed from `App.js`, the API request was still returning all restaurants instead of just those created by the logged-in user.  
+  *Solution:*  
+  • The issue was in how the filter prop was being appended to the `URLSearchParams` object in the `RestaurantList` component. It was being appended under the key `created_by` instead of the expected `created_by__username`. The solution involved modifying the `RestaurantList` function to correctly extract the username from the filter prop and append it to the params object under the `created_by__username` key. This ensured that the API request included the correct filter parameter, resulting in the desired filtered list of restaurants on the `/myrestaurants` page.
 
-## FAQ about the uptime script
+- *Bug 5:*  
+  • When editing a restaurant without changing the image, the form submission would fail with a `400 Bad Request` error, even though the `imageChanged` state was correctly indicating no image change.  
+  *Solution:*  
+  • The issue was caused by the image field in the Django Restaurant model not being marked as `blank=True`. This made the image field mandatory, even for updates, leading to the backend rejecting requests where the image wasn't provided. The solution involved adding `blank=True` to the image field definition in the model, making it optional during updates.
 
-**Why have you added this script?**
+- *Bug 6:*  
+  • API requests in the frontend were failing with `404 (Not Found)` or `405 (Method Not Allowed)` errors because some URLs were missing a trailing slash (/). This caused the requests to be sent to incorrect endpoints on the backend, resulting in unexpected behavior.  
+  *Solution:*  
+  • The issue was resolved by carefully reviewing the frontend code and adding the missing trailing slashes to the API endpoint URLs. This ensured that the requests were directed to the correct endpoints on the backend, allowing the application to function as intended.
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+## Unsolved Bugs
+No unresolved bugs remain at this time.
 
-**How will this affect me?**
+## References
+As a starting point for the development of this project the Moments walkthrough project provided by Code Institute was a great help.
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+## Acknowledgments
+- I want to thank [Iuliia Konovalova](https://github.com/IuliiaKonovalova) for her guidance and support throughout this project.
+- A big thank you to all of the Team of [Code Institute](https://codeinstitute.net/) for providing the learning content which enabled me to create this project.

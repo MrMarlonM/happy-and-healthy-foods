@@ -5,7 +5,7 @@ from restaurants.models import Restaurant
 
 class Like(models.Model):
     """
-    Represents a 'like' or 'favorite' action by a user on a restaurant.
+    Represents a 'like' action by a user on a restaurant.
 
     Relationships:
     - `restaurant`: The restaurant that received the like
