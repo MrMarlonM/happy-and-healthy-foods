@@ -123,9 +123,15 @@ const RestaurantList = () => {
               next={() => fetchMoreData(restaurants, setRestaurants)}
             />) : 
               (pathname === "/" ? 
-                <p>No restaurants where added yet ...</p> 
-                : <p>You did not create any restaurants yet ...</p>)
+                <p className='text-center'>
+                  <strong>No restaurants fulfilling your criteria where added yet ...</strong>
+                </p> 
+                : 
+                <p className='text-center'>
+                  <strong>You didn't add any restaurants yet or you're filtering for something you didn't create yet ...</strong>
+                </p>
               )
+            )
             : <Asset message="loading..." />
           }
         </Col>
