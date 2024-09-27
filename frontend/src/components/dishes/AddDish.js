@@ -108,6 +108,7 @@ const AddDish = (props) => {
                     required
                     type="number"
                     min={0}
+                    step="0.01"
                     name="price"
                     value={price}
                     onChange={handleChange}

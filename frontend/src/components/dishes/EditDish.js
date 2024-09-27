@@ -127,6 +127,7 @@ const EditDish = (props) => {
                 <Form.Control
                     required
                     min={0}
+                    step="0.01"
                     type="number"
                     name="price"
                     value={dishData.price}
