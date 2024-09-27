@@ -148,6 +148,13 @@
 
 ## Automated Testing
 ### Backend
+For the backend in sum 18 automated tests where created to make sure all the provided functionality works as intended.  
+The tests check if entries for restaurants, reviews and dishes can be created correctly, listed, edited, updated and deleted.
+
+![automated-tests-backend](documentation/automated-tests-backend.png)
+
+### Frontend
+
 
 ## Code Validation
 ### HTML
