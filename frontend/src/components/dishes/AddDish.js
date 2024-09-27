@@ -24,7 +24,7 @@ const AddDish = (props) => {
 
     const handleChange = (event) => {
         setDishData({
-
+            ...dishData,
             [event.target.name]: event.target.value,
         });
     };
