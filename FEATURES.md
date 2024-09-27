@@ -99,3 +99,5 @@ Also the user can edit or delete his own reviews at will.
 ![edit review](documentation/edit-review.png)
 
 ![delete review](documentation/delete-review.png)
+
+[Click here](/README.md) to get back to the readme.

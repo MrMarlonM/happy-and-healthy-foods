@@ -1,6 +1,8 @@
 # Happy and Healthy Foods
 The restaurant comparison platform **Happy and Healthy Foods** sets out to offer a community-driven approach for comparing restaurants all over the world.  
 
+The live version can be accessed [here](https://happy-and-healthy-foods-22391b3fcf35.herokuapp.com/).
+
 ## User Experience
 ### The big picture
 The theme of the website is to offer every user the ability to add restaurants in an easy and fast way whilst also to be able to browse restaurants others added. Through added filter and search functionalities, users can find their respective city and preferred choice of food in a fast and easy manner. 
@@ -238,6 +240,9 @@ Represents a review written by a user about a restaurant.
 
 ## Unsolved Bugs
 No unresolved bugs remain at this time.
+
+## Testing
+Please refer to the [TESTING.md](/TESTING.md) file for test related documentation of the project.
 
 ## Deployment
 ### Local Deployment
