@@ -60,11 +60,7 @@ const RestaurantList = () => {
 
   const handleFilterChange = (filterName, value) => {
     setFilters((prevFilters) => {
-      const updatedValues = prevFilters[filterName].includes(value)
-        ? prevFilters[filterName].filter((item) => item !== value)
-        : [...prevFilters[filterName], value];
-
-      return { ...prevFilters, [filterName]: updatedValues };
+      return { ...prevFilters, [filterName]: [value] };
     });
   };
 
@@ -125,7 +121,11 @@ const RestaurantList = () => {
               loader={<Asset />}
               hasMore={!!restaurants.next}
               next={() => fetchMoreData(restaurants, setRestaurants)}
-            />) : <p>You did not create any restaurants yet ...</p>)
+            />) : 
+              (pathname === "/" ? 
+                <p>No restaurants where added yet ...</p> 
+                : <p>You did not create any restaurants yet ...</p>)
+              )
             : <Asset message="loading..." />
           }
         </Col>
@@ -149,7 +149,7 @@ const RestaurantList = () => {
                 {cuisineTypes.map((cuisine) => (
                   <Form.Check
                     key={cuisine}
-                    type="checkbox"
+                    type="radio"
                     label={cuisine}
                     checked={filters.cuisine_type.includes(cuisine)}
                     onChange={() => handleFilterChange('cuisine_type', cuisine)}
@@ -161,7 +161,7 @@ const RestaurantList = () => {
                 {dietaryPreferences.map((preference) => (
                   <Form.Check
                     key={preference}
-                    type="checkbox"
+                    type="radio"
                     label={preference}
                     checked={filters.dish__dietary_preference.includes(preference)}
                     onChange={() => handleFilterChange('dish__dietary_preference', preference)}
