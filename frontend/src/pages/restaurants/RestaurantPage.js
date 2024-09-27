@@ -59,7 +59,7 @@ const RestaurantPage = () => {
         <>
           <Restaurant {...restaurant.results[0]} />
           <Row>
-            <Col>
+            <Col md={6}>
               {is_creator ? <AddDish setDishes={setDishes} /> : <h2>Dishes</h2>}
               {dishes.results.length ? (
                 <InfiniteScroll
@@ -72,9 +72,14 @@ const RestaurantPage = () => {
                   next={() => fetchMoreData(dishes, setDishes)}
                 />
 
-              ) : "No dishes added yet by the creator..."}
+              ) : (
+                    <p className='text-center'>
+                      <strong>No dishes added yet by the creator...</strong>
+                    </p>
+                  )
+              }
             </Col>
-            <Col>
+            <Col md={6}>
               {currentUser ? <AddReview setReviews={setReviews} /> : <h2>Reviews</h2>}
               {reviews.results.length ? (
                 <InfiniteScroll
@@ -86,7 +91,10 @@ const RestaurantPage = () => {
                 hasMore={!!reviews.next}
                 next={() => fetchMoreData(reviews, setReviews)}
               />
-              ) : "No reviews added yet..."}
+              ) : <p className='text-center'>
+                    <strong>No reviews added yet...</strong>
+                  </p>
+              }
             </Col>
           </Row>
         </>
