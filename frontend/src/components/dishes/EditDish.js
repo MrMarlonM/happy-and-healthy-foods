@@ -22,7 +22,7 @@ const EditDish = (props) => {
     useEffect(() => {
         const handleMount = async () => {
             try {
-                const { data } = await axiosReq.get(`/dishes/${id}/`)
+                const { data } = await axiosReq.get(`/dishes/${id}/`);
                 const { name, short_description, price, image, dietary_preference } = data;
                 setDishData({
                     name: name,
@@ -34,9 +34,9 @@ const EditDish = (props) => {
             } catch (err) {
 
             }
-        }
+        };
         handleMount();
-    }, [id])
+    }, [id]);
 
     const imageInput = useRef(null);
 
@@ -55,20 +55,20 @@ const EditDish = (props) => {
                 image: URL.createObjectURL(event.target.files[0])
             });
             setImageChanged(true);
-        };
+        }
     };
 
     const handleSubmit = async (event) => {
-        event.preventDefault()
+        event.preventDefault();
         const formDataDish = new FormData();
 
-        formDataDish.append('restaurant', dishData.id)
-        formDataDish.append('name', dishData.name)
-        formDataDish.append('short_description', dishData.short_description)
-        formDataDish.append('price', dishData.price)
-        formDataDish.append('dietary_preference', dishData.dietary_preference)
+        formDataDish.append('restaurant', dishData.id);
+        formDataDish.append('name', dishData.name);
+        formDataDish.append('short_description', dishData.short_description);
+        formDataDish.append('price', dishData.price);
+        formDataDish.append('dietary_preference', dishData.dietary_preference);
         if (imageChanged && imageInput?.current?.files[0]) {
-            formDataDish.append('image', imageInput.current.files[0])
+            formDataDish.append('image', imageInput.current.files[0]);
         }
 
         try {
@@ -82,14 +82,14 @@ const EditDish = (props) => {
                     }
                 });
                 return { ...prevDishes, results: updatedResults };
-            })
-            setShowEditDish(false)
+            });
+            setShowEditDish(false);
         } catch (err) {
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data);
             }
         }
-    }
+    };
 
     return (
         <Form className={styles.Form} onSubmit={handleSubmit}>

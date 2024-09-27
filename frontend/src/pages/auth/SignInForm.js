@@ -32,9 +32,9 @@ const SignInForm = () => {
             setTokenTimestamp(data);
             history.push('/');
         } catch (err) {
-            setErrors(err.response?.data)
+            setErrors(err.response?.data);
         }
-    }
+    };
 
     const handleChange = (event) => {
         setSignInData({

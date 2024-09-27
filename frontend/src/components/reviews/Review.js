@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -30,11 +30,11 @@ const Review = (props) => {
             setReviews((prevReviews) => ({
                 ...prevReviews,
                 results: prevReviews.results.filter((review) => review.id !== id),
-            }))
+            }));
         } catch (err) {
 
         }
-    }
+    };
 
     return (
         <>

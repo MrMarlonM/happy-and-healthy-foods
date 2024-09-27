@@ -44,10 +44,10 @@ const RestaurantPage = () => {
     setHasLoaded(false);
     const timer = setTimeout(() => {
       handleMount();
-    }, 500)
+    }, 500);
     return () => {
       clearTimeout(timer);
-    }
+    };
   }, [id]);
 
   const currentUser = useCurrentUser();

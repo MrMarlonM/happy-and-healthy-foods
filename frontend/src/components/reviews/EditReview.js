@@ -16,7 +16,7 @@ const EditReview = (props) => {
 
     const handleChange = (event) => {
         setFormContent(event.target.value);
-    }
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -38,7 +38,7 @@ const EditReview = (props) => {
         } catch(err) {
 
         }
-    }
+    };
 
 
   return (

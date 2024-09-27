@@ -28,7 +28,7 @@ const RestaurantEdit = () => {
     useEffect(() => {
         const handleMount = async () => {
             try {
-                const { data } = await axiosRes.get(`/restaurants/${id}/`)
+                const { data } = await axiosRes.get(`/restaurants/${id}/`);
                 const { name, city, country, image, short_description, cuisine_type, is_owner } = data;
 
                 is_owner ?
@@ -44,15 +44,15 @@ const RestaurantEdit = () => {
             } catch (err) {
 
             }
-        }
+        };
         setHasLoaded(false);
         const timer = setTimeout(() => {
             handleMount();
-        }, 500)
+        }, 500);
         return () => {
             clearTimeout(timer);
-        }
-    }, [history, id])
+        };
+    }, [history, id]);
 
     const imageInput = useRef(null);
 
@@ -71,31 +71,31 @@ const RestaurantEdit = () => {
                 image: URL.createObjectURL(event.target.files[0])
             });
             setImageChanged(true);
-        };
+        }
     };
 
     const handleSubmit = async (event) => {
-        event.preventDefault()
+        event.preventDefault();
         const formData = new FormData();
 
-        formData.append('name', restaurantData.name)
-        formData.append('city', restaurantData.city)
-        formData.append('country', restaurantData.country)
-        formData.append('short_description', restaurantData.short_description)
-        formData.append('cuisine_type', restaurantData.cuisine_type)
+        formData.append('name', restaurantData.name);
+        formData.append('city', restaurantData.city);
+        formData.append('country', restaurantData.country);
+        formData.append('short_description', restaurantData.short_description);
+        formData.append('cuisine_type', restaurantData.cuisine_type);
         if (imageChanged && imageInput?.current?.files[0]) {
-            formData.append('image', imageInput.current.files[0])
+            formData.append('image', imageInput.current.files[0]);
         }
 
         try {
             await axiosReq.put(`/restaurants/${id}/`, formData);
-            history.push(`/restaurants/${id}`)
+            history.push(`/restaurants/${id}`);
         } catch (err) {
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data);
             }
         }
-    }
+    };
 
     return (
         <>

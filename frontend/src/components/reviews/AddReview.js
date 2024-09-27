@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -23,24 +23,24 @@ const AddReview = (props) => {
     };
 
     const handleSubmit = async (event) => {
-        event.preventDefault()
+        event.preventDefault();
         const formDataReview = new FormData();
 
-        formDataReview.append('restaurant', id)
-        formDataReview.append('created_by', currentUser)
-        formDataReview.append('content', content)
+        formDataReview.append('restaurant', id);
+        formDataReview.append('created_by', currentUser);
+        formDataReview.append('content', content);
 
         try {
             const {data} = await axiosReq.post('/reviews/', formDataReview);
             setReviews((prevReviews) => ({
                 ...prevReviews,
                 results: [data, ...prevReviews.results],
-            }))
+            }));
             setReviewData({content: ""});
         } catch(err) {
 
         }
-    }
+    };
 
   return (
     <Form className={styles.Form} onSubmit={handleSubmit}>

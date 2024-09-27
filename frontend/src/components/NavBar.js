@@ -22,7 +22,7 @@ const NavBar = () => {
             removeTokenTimestamp();
         } catch (err) {
 
-        };
+        }
     };
 
     const loggedInNav = (

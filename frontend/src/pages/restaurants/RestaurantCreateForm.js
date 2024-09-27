@@ -39,29 +39,29 @@ const RestaurantCreateForm = () => {
                 ...restaurantData,
                 image: URL.createObjectURL(event.target.files[0])
             });
-        };
+        }
     };
 
     const handleSubmit = async (event) => {
-        event.preventDefault()
+        event.preventDefault();
         const formData = new FormData();
 
-        formData.append('name', name)
-        formData.append('city', city)
-        formData.append('country', country)
-        formData.append('image', imageInput.current.files[0])
-        formData.append('short_description', short_description)
-        formData.append('cuisine_type', cuisine_type)
+        formData.append('name', name);
+        formData.append('city', city);
+        formData.append('country', country);
+        formData.append('image', imageInput.current.files[0]);
+        formData.append('short_description', short_description);
+        formData.append('cuisine_type', cuisine_type);
 
         try {
             const { data } = await axiosReq.post('/restaurants/', formData);
-            history.push(`/restaurants/${data.id}`)
+            history.push(`/restaurants/${data.id}`);
         } catch (err) {
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data);
             }
         }
-    }
+    };
 
     return (
         <Form className={styles.Form} onSubmit={handleSubmit}>

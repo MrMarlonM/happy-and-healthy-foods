@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { axiosReq } from '../../api/axiosDefaults';
 import Restaurant from './Restaurant';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
@@ -23,7 +23,7 @@ const RestaurantList = () => {
   const [filters, setFilters] = useState({
     cuisine_type: [],
     dish__dietary_preference: [],
-  })
+  });
   const cuisineTypes = [
     "italian",
     "indian",
@@ -38,7 +38,7 @@ const RestaurantList = () => {
     "vietnamese",
     "korean",
     "other",
-  ]
+  ];
 
   const dietaryPreferences = [
     "vegetarian",
@@ -48,7 +48,7 @@ const RestaurantList = () => {
     "halal",
     "kosher",
     "other",
-  ]
+  ];
 
   const resetFilters = () => {
     setFilters({
@@ -56,7 +56,7 @@ const RestaurantList = () => {
       dish__dietary_preference: [],
     });
     setQuery("");
-  }
+  };
 
   const handleFilterChange = (filterName, value) => {
     setFilters((prevFilters) => {
@@ -97,11 +97,11 @@ const RestaurantList = () => {
     };
     const timer = setTimeout(() => {
       fetchRestaurants();
-    }, 500)
+    }, 500);
     return () => {
       clearTimeout(timer);
-    }
-  }, [filters, pathname, query, currentUser])
+    };
+  }, [filters, pathname, query, currentUser]);
 
   return (
     <>

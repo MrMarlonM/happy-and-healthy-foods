@@ -24,7 +24,7 @@ const AddDish = (props) => {
 
     const handleChange = (event) => {
         setDishData({
-            ...dishData,
+
             [event.target.name]: event.target.value,
         });
     };
@@ -36,19 +36,19 @@ const AddDish = (props) => {
                 ...dishData,
                 image: URL.createObjectURL(event.target.files[0])
             });
-        };
+        }
     };
 
     const handleSubmit = async (event) => {
-        event.preventDefault()
+        event.preventDefault();
         const formDataDish = new FormData();
 
-        formDataDish.append('restaurant', id)
-        formDataDish.append('name', name)
-        formDataDish.append('short_description', short_description)
-        formDataDish.append('price', price)
-        formDataDish.append('image', imageInput.current.files[0])
-        formDataDish.append('dietary_preference', dietary_preference)
+        formDataDish.append('restaurant', id);
+        formDataDish.append('name', name);
+        formDataDish.append('short_description', short_description);
+        formDataDish.append('price', price);
+        formDataDish.append('image', imageInput.current.files[0]);
+        formDataDish.append('dietary_preference', dietary_preference);
 
         try {
             const { data } = await axiosReq.post('/dishes/', formDataDish);
@@ -68,7 +68,7 @@ const AddDish = (props) => {
                 setErrors(err.response?.data);
             }
         }
-    }
+    };
 
     return (
         <Form className={styles.Form} onSubmit={handleSubmit}>
@@ -164,6 +164,6 @@ const AddDish = (props) => {
             )}
         </Form>
     )
-}
+};
 
 export default AddDish

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from "../../styles/Restaurant.module.css"
+import styles from "../../styles/Restaurant.module.css";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -34,17 +34,17 @@ const Restaurant = (props) => {
     const handleClose = () => setShow(false);
 
     const handleEdit = () => {
-        history.push(`/restaurants/${id}/edit/`)
-    }
+        history.push(`/restaurants/${id}/edit/`);
+    };
 
     const handleDelete = async () => {
         try {
-            await axiosRes.delete(`/restaurants/${id}/`)
+            await axiosRes.delete(`/restaurants/${id}/`);
             history.push('/myrestaurants');
         } catch (err) {
 
         }
-    }
+    };
 
     return (
         <>
