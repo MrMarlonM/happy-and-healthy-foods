@@ -149,8 +149,14 @@
 
 ## Code Validation
 ### HTML
+For the validation of the HTML code the official [W3C Markup Validation Service](https://validator.w3.org/) was used.
+
+![HTML Validation](documentation/html-validation.png)
 
 ### CSS
+For the validation of the CSS code of the website [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) was used.
+
+![CSS Validation](documentation/css-validation.png)
 
 ### JavaScript
 
