@@ -241,7 +241,6 @@ No unresolved bugs remain at this time.
 
 ## Deployment
 ### Local Deployment
-### Local Deployment
 - Open your IDE
 - Run the following command in your terminal:
     - `git clone https://github.com/MrMarlonM/happy-and-healthy-foods.git`
