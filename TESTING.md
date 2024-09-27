@@ -159,8 +159,13 @@ For the validation of the CSS code of the website [W3C CSS Validation Service](h
 ![CSS Validation](documentation/css-validation.png)
 
 ### JavaScript
+For the validation of the javascript code the [jshint](https://jshint.com/) validator was used.  
+Since the validator doesn't know React specific elements, only the code up to the return statement is validated and then a Unclosed Regular Expression warning shows up.  
+Please refer to [this pdf](documentation/javascript-validation.pdf) for a detailed documentation.
 
 ### Python
+For the validation of the python code written for the project the [Code Institute CI Python Linter](https://pep8ci.herokuapp.com/#) was used.  
+Please refer to [this pdf](documentation/python-validation.pdf) for a detailed documentation.
 
 ### Performance (Google Lighthouse)
 To test for the general performance of the website as well as accessability, best practices and SEO, Google Lighthouse was used.  
