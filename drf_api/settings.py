@@ -84,11 +84,9 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
     'corsheaders',
 
-    'profiles',
     'restaurants',
     'dishes',
     'reviews',
-    'likes',
 ]
 SITE_ID = 1
 MIDDLEWARE = [

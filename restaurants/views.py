@@ -38,10 +38,7 @@ class RestaurantList(generics.ListCreateAPIView):
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly
     ]
-    queryset = Restaurant.objects.annotate(
-        like_count=Count('like', distinct=True),
-        review_count=Count('review', distinct=True)
-    ).order_by('-created_at')
+    queryset = Restaurant.objects.order_by('-created_at')
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
@@ -65,8 +62,6 @@ class RestaurantList(generics.ListCreateAPIView):
         'city',
         'country',
         'cuisine_type',
-        'like_count',
-        'review_count',
         'created_at',
         'updated_at',
     ]
@@ -90,7 +85,4 @@ class RestaurantDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     serializer_class = RestaurantSerializer
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = Restaurant.objects.annotate(
-        like_count=Count('like', distinct=True),
-        review_count=Count('review', distinct=True)
-    ).order_by('-created_at')
+    queryset = Restaurant.objects.order_by('-created_at')
