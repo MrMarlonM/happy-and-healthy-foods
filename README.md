@@ -241,11 +241,67 @@ No unresolved bugs remain at this time.
 
 ## Deployment
 ### Local Deployment
+### Local Deployment
+- Open your IDE
+- Run the following command in your terminal:
+    - `git clone https://github.com/MrMarlonM/happy-and-healthy-foods.git`
+- If you are not in the cloned directory, run the following command next:
+    - `cd happy-and-healthy-foods`
+- Install the dependencies with the following command in your terminal:
+    - `pip3 install -r requirements.txt`
+- Creat a `env.py` file and add the following variables to it:
+    - `import os`
+    - `os.environ['SECRET_KEY'] = 'Your secret key'`
+    - `os.environ['ALLOWED_HOST'] = '<Your local host URL>'`
+    - `os.environ['CLIENT_ORIGIN'] = 'https://<Your local host URL>'`
+    - `os.environ['CLOUD_NAME'] = 'Your cloudinary Cloudname'`
+    - `os.environ['API_KEY'] = 'Your cloudinary API Key'`
+    - `os.environ['API_SECRET'] = 'Your cloudinary API secret'`
+    - `os.environ['DATABASE_URL'] = 'Your database URL'`
+- Migrate the models to your database through running the following commands in the terminal:
+    - `python3 manage.py makemigrations`
+    - `python3 manage.py migrate`
+- Change the directory now into the frontend folder with the following command:
+    - `cd frontend`
+- Install the needed packages with the node package manager:
+    - `npm install`
+- Go back to the root directory of the newly installed app with the following command:
+    - `cd ../`
+- Now you can run the local version of the project through the following command:
+    - `python manage.py runserver`
 
 ### Deployment to Heroku
+To deploy the application to heroku follow along this steps:
+  - Make sure you are in the root directory of the project `happy-and-healthy-foods`
+  - Create a new directory for static files
+    - `mkdir staticfiles`
+  - Now collect the static files for the backend with the following command:
+    - `python3 manage.py collectstatic`
+  - Change now to the frontend with the following command:
+    - `cd frontend`
+  - Compile the react files and move them to the staticfiles folder:
+    - `npm run build && mv build ../staticfiles/.`
+  - Now, push the code from your locally deployed version to Github
+    - `git add .`
+    - `git commit -m "Your commit message"`
+    - `git push`
+  - Next, go to [heroku](www.heroku.com) and log into your existing account or create a new one
+  - Click on create new app and enter your location and unique app name
+  - Click on the settings tab in your app
+  - Now add all the variables you set in the env.py file to the Config Vars.
+  - Add the following extra variable to the config vars:
+    - `COLLECT_STATIC = 1`
+  - Still in the settings section click on add Buildpack and make sure to add the following:
+    - `heroku/Python`
+  - Click on the `Deploy` button in your application
+    - Choose Github as deployment method
+    - Connect your Github account
+    - Connect the repository you pushed to code to
+    - Go to manual deploy and choose the correct branch and click on `Deploy Branch`
 
-## References
-As a starting point for the development of this project the Moments walkthrough project provided by Code Institute was a great help.
+## References and Credits
+As a starting point for the development of this project the [Moments walkthrough project](https://github.com/MrMarlonM/moments) provided by [Code Institute](https://codeinstitute.net/se/) was a great help.  
+For the the set up of axiosDefaults.js, the useClickOutsideToggle.js, the useRedirect.js and the utils.js code I relied heavily on the code provided in the [Moments walkthrough project](https://github.com/MrMarlonM/moments).
 
 ## Acknowledgments
 - I want to thank [Iuliia Konovalova](https://github.com/IuliiaKonovalova) for her guidance and support throughout this project.
