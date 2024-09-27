@@ -128,6 +128,13 @@ This project embraced Agile principles throughout its development, ensuring flex
 
 This Agile approach allowed for flexibility, frequent feedback, and iterative development, ensuring the final product delivered maximum value to users.
 
+## React Component Reusability
+In the project, the Restaurant.js component serves as a prime example of how component reusability contributes to a seamless user experience. This component is utilized in both the RestaurantList.js and RestaurantPage.js pages.  
+In RestaurantList.js, Restaurant.js renders a concise preview of each restaurant, displaying essential information like name, cuisine type, and an image.  
+In RestaurantPage.js, the same Restaurant.js component is employed together with added information like the dishes and reviews as well as the ability to add to them (only for the correct user).
+By reusing the Restaurant.js component, the project maintains a consistent look and allows for easy navigation. Through that, the application becomes more intuitive and user-friendly.  
+This approach also streamlines development and ensures a consistent user experience throughout the application.  
+
 ## Entity Relationship Model
 The following entity relationship model was crafted for the project:  
 ![image of entity relationship model](documentation/entity-relationship-model.png)  
