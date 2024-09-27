@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TransactionTestCase
 from django.contrib.auth.models import User
 from django.core.files.uploadedfile import SimpleUploadedFile
 from rest_framework.test import APIClient
@@ -10,8 +10,9 @@ from decimal import Decimal
 from io import BytesIO
 
 
-class DishListTestCase(TestCase):
+class DishListTestCase(TransactionTestCase):
     def setUp(self):
+        Dish.objects.all().delete()
         self.user = User.objects.create_user(
             username='testuser',
             password='testpassword',
@@ -50,7 +51,7 @@ class DishListTestCase(TestCase):
     def test_list_dishes(self):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.data), 2)
+        self.assertEqual(len(response.data['results']), 2)
 
     def test_create_dish(self):
         self.client.force_authenticate(user=self.user)
@@ -79,16 +80,16 @@ class DishListTestCase(TestCase):
         self.assertEqual(Dish.objects.count(), 3)
 
 
-class DishDetailTestCase(TestCase):
+class DishDetailTestCase(TransactionTestCase):
     def setUp(self):
 
         self.user = User.objects.create_user(
-            username='testuser',
+            username='testuser2',
             password='testpassword',
             )
         self.restaurant = Restaurant.objects.create(
             created_by=self.user,
-            name='Test Restaurant',
+            name='Test Restaurant2',
             city='Example',
             country='example',
             image='uploaded_image',

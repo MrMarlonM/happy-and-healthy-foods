@@ -146,6 +146,8 @@
 - Actual Outcome:
     - All expected outcomes where fulfilled
 
+## Automated Testing
+### Backend
 
 ## Code Validation
 ### HTML

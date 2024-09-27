@@ -38,7 +38,7 @@ class ReviewListTestCase(TestCase):
     def test_list_reviews(self):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.data), 2)
+        self.assertEqual(len(response.data['results']), 2)
 
     def test_create_review_authenticated(self):
         self.client.force_authenticate(user=self.user)
