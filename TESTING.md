@@ -154,7 +154,9 @@ The tests check if entries for restaurants, reviews and dishes can be created co
 ![automated-tests-backend](documentation/automated-tests-backend.png)
 
 ### Frontend
+For the frontend two basic automated tests were added to check if the Navbar component and the dish component are rendered correctly.
 
+![automated-tests-frontend](documentation/automated-tests-frontend.png)
 
 ## Code Validation
 ### HTML
